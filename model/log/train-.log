@@ -1,0 +1,4171 @@
+I0601 17:59:45.820418 14567 caffe.cpp:275] Use GPU with device ID 0
+I0601 17:59:46.731781 14567 caffe.cpp:279] GPU device name: GeForce GTX 1080
+I0601 17:59:48.167024 14567 net.cpp:51] Initializing net from parameters: 
+name: "PytorchDataLayer"
+state {
+  phase: TEST
+  level: 0
+  stage: ""
+}
+layer {
+  name: "data"
+  type: "PytorchData"
+  top: "data"
+  top: "label"
+  include {
+    phase: TEST
+  }
+  transform_param {
+    crop_size: 224
+    mean_value: 0.485
+    mean_value: 0.456
+    mean_value: 0.406
+    std_value: 0.229
+    std_value: 0.224
+    std_value: 0.225
+    bgr2rgb: true
+  }
+  pytorch_data_param {
+    source: "/mnt/lustre/share/imagenet/meta/val.txt"
+    batch_size: 20
+    shuffle: false
+    new_height: 256
+    new_width: 256
+    root_folder: "/mnt/lustre/share/imagenet/val/"
+  }
+}
+layer {
+  name: "286"
+  type: "Convolution"
+  bottom: "data"
+  top: "286"
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    group: 1
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 2
+    stride_w: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "287_bn"
+  type: "BatchNorm"
+  bottom: "286"
+  top: "287"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "287"
+  type: "Scale"
+  bottom: "287"
+  top: "287"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "288"
+  type: "ReLU"
+  bottom: "287"
+  top: "288"
+}
+layer {
+  name: "289"
+  type: "Convolution"
+  bottom: "288"
+  top: "289"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "290_bn"
+  type: "BatchNorm"
+  bottom: "289"
+  top: "290"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "290"
+  type: "Scale"
+  bottom: "290"
+  top: "290"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "291"
+  type: "ReLU"
+  bottom: "290"
+  top: "291"
+}
+layer {
+  name: "292"
+  type: "Convolution"
+  bottom: "291"
+  top: "292"
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    group: 32
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "293_bn"
+  type: "BatchNorm"
+  bottom: "292"
+  top: "293"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "293"
+  type: "Scale"
+  bottom: "293"
+  top: "293"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "294"
+  type: "ReLU"
+  bottom: "293"
+  top: "294"
+}
+layer {
+  name: "295"
+  type: "Convolution"
+  bottom: "294"
+  top: "295"
+  convolution_param {
+    num_output: 16
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "296_bn"
+  type: "BatchNorm"
+  bottom: "295"
+  top: "296"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "296"
+  type: "Scale"
+  bottom: "296"
+  top: "296"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "297"
+  type: "Convolution"
+  bottom: "296"
+  top: "297"
+  convolution_param {
+    num_output: 96
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "298_bn"
+  type: "BatchNorm"
+  bottom: "297"
+  top: "298"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "298"
+  type: "Scale"
+  bottom: "298"
+  top: "298"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "299"
+  type: "ReLU"
+  bottom: "298"
+  top: "299"
+}
+layer {
+  name: "300"
+  type: "Convolution"
+  bottom: "299"
+  top: "300"
+  convolution_param {
+    num_output: 96
+    bias_term: true
+    group: 96
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 2
+    stride_w: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "301_bn"
+  type: "BatchNorm"
+  bottom: "300"
+  top: "301"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "301"
+  type: "Scale"
+  bottom: "301"
+  top: "301"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "302"
+  type: "ReLU"
+  bottom: "301"
+  top: "302"
+}
+layer {
+  name: "303"
+  type: "Convolution"
+  bottom: "302"
+  top: "303"
+  convolution_param {
+    num_output: 24
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "304_bn"
+  type: "BatchNorm"
+  bottom: "303"
+  top: "304"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "304"
+  type: "Scale"
+  bottom: "304"
+  top: "304"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "305"
+  type: "Convolution"
+  bottom: "304"
+  top: "305"
+  convolution_param {
+    num_output: 144
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "306_bn"
+  type: "BatchNorm"
+  bottom: "305"
+  top: "306"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "306"
+  type: "Scale"
+  bottom: "306"
+  top: "306"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "307"
+  type: "ReLU"
+  bottom: "306"
+  top: "307"
+}
+layer {
+  name: "308"
+  type: "Convolution"
+  bottom: "307"
+  top: "308"
+  convolution_param {
+    num_output: 144
+    bias_term: true
+    group: 144
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "309_bn"
+  type: "BatchNorm"
+  bottom: "308"
+  top: "309"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "309"
+  type: "Scale"
+  bottom: "309"
+  top: "309"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "310"
+  type: "ReLU"
+  bottom: "309"
+  top: "310"
+}
+layer {
+  name: "311"
+  type: "Convolution"
+  bottom: "310"
+  top: "311"
+  convolution_param {
+    num_output: 24
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "312_bn"
+  type: "BatchNorm"
+  bottom: "311"
+  top: "312"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "312"
+  type: "Scale"
+  bottom: "312"
+  top: "312"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "313"
+  type: "Eltwise"
+  bottom: "304"
+  bottom: "312"
+  top: "313"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "314"
+  type: "Convolution"
+  bottom: "313"
+  top: "314"
+  convolution_param {
+    num_output: 144
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "315_bn"
+  type: "BatchNorm"
+  bottom: "314"
+  top: "315"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "315"
+  type: "Scale"
+  bottom: "315"
+  top: "315"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "316"
+  type: "ReLU"
+  bottom: "315"
+  top: "316"
+}
+layer {
+  name: "317"
+  type: "Convolution"
+  bottom: "316"
+  top: "317"
+  convolution_param {
+    num_output: 144
+    bias_term: true
+    group: 144
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 2
+    stride_w: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "318_bn"
+  type: "BatchNorm"
+  bottom: "317"
+  top: "318"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "318"
+  type: "Scale"
+  bottom: "318"
+  top: "318"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "319"
+  type: "ReLU"
+  bottom: "318"
+  top: "319"
+}
+layer {
+  name: "320"
+  type: "Convolution"
+  bottom: "319"
+  top: "320"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "321_bn"
+  type: "BatchNorm"
+  bottom: "320"
+  top: "321"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "321"
+  type: "Scale"
+  bottom: "321"
+  top: "321"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "322"
+  type: "Convolution"
+  bottom: "321"
+  top: "322"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "323_bn"
+  type: "BatchNorm"
+  bottom: "322"
+  top: "323"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "323"
+  type: "Scale"
+  bottom: "323"
+  top: "323"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "324"
+  type: "ReLU"
+  bottom: "323"
+  top: "324"
+}
+layer {
+  name: "325"
+  type: "Convolution"
+  bottom: "324"
+  top: "325"
+  convolution_param {
+    num_output: 192
+    bias_term: true
+    group: 192
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "326_bn"
+  type: "BatchNorm"
+  bottom: "325"
+  top: "326"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "326"
+  type: "Scale"
+  bottom: "326"
+  top: "326"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "327"
+  type: "ReLU"
+  bottom: "326"
+  top: "327"
+}
+layer {
+  name: "328"
+  type: "Convolution"
+  bottom: "327"
+  top: "328"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "329_bn"
+  type: "BatchNorm"
+  bottom: "328"
+  top: "329"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "329"
+  type: "Scale"
+  bottom: "329"
+  top: "329"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "330"
+  type: "Eltwise"
+  bottom: "321"
+  bottom: "329"
+  top: "330"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "331"
+  type: "Convolution"
+  bottom: "330"
+  top: "331"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "332_bn"
+  type: "BatchNorm"
+  bottom: "331"
+  top: "332"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "332"
+  type: "Scale"
+  bottom: "332"
+  top: "332"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "333"
+  type: "ReLU"
+  bottom: "332"
+  top: "333"
+}
+layer {
+  name: "334"
+  type: "Convolution"
+  bottom: "333"
+  top: "334"
+  convolution_param {
+    num_output: 192
+    bias_term: true
+    group: 192
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "335_bn"
+  type: "BatchNorm"
+  bottom: "334"
+  top: "335"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "335"
+  type: "Scale"
+  bottom: "335"
+  top: "335"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "336"
+  type: "ReLU"
+  bottom: "335"
+  top: "336"
+}
+layer {
+  name: "337"
+  type: "Convolution"
+  bottom: "336"
+  top: "337"
+  convolution_param {
+    num_output: 32
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "338_bn"
+  type: "BatchNorm"
+  bottom: "337"
+  top: "338"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "338"
+  type: "Scale"
+  bottom: "338"
+  top: "338"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "339"
+  type: "Eltwise"
+  bottom: "330"
+  bottom: "338"
+  top: "339"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "340"
+  type: "Convolution"
+  bottom: "339"
+  top: "340"
+  convolution_param {
+    num_output: 192
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "341_bn"
+  type: "BatchNorm"
+  bottom: "340"
+  top: "341"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "341"
+  type: "Scale"
+  bottom: "341"
+  top: "341"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "342"
+  type: "ReLU"
+  bottom: "341"
+  top: "342"
+}
+layer {
+  name: "343"
+  type: "Convolution"
+  bottom: "342"
+  top: "343"
+  convolution_param {
+    num_output: 192
+    bias_term: true
+    group: 192
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 2
+    stride_w: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "344_bn"
+  type: "BatchNorm"
+  bottom: "343"
+  top: "344"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "344"
+  type: "Scale"
+  bottom: "344"
+  top: "344"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "345"
+  type: "ReLU"
+  bottom: "344"
+  top: "345"
+}
+layer {
+  name: "346"
+  type: "Convolution"
+  bottom: "345"
+  top: "346"
+  convolution_param {
+    num_output: 64
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "347_bn"
+  type: "BatchNorm"
+  bottom: "346"
+  top: "347"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "347"
+  type: "Scale"
+  bottom: "347"
+  top: "347"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "348"
+  type: "Convolution"
+  bottom: "347"
+  top: "348"
+  convolution_param {
+    num_output: 384
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "349_bn"
+  type: "BatchNorm"
+  bottom: "348"
+  top: "349"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "349"
+  type: "Scale"
+  bottom: "349"
+  top: "349"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "350"
+  type: "ReLU"
+  bottom: "349"
+  top: "350"
+}
+layer {
+  name: "351"
+  type: "Convolution"
+  bottom: "350"
+  top: "351"
+  convolution_param {
+    num_output: 384
+    bias_term: true
+    group: 384
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "352_bn"
+  type: "BatchNorm"
+  bottom: "351"
+  top: "352"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "352"
+  type: "Scale"
+  bottom: "352"
+  top: "352"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "353"
+  type: "ReLU"
+  bottom: "352"
+  top: "353"
+}
+layer {
+  name: "354"
+  type: "Convolution"
+  bottom: "353"
+  top: "354"
+  convolution_param {
+    num_output: 64
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "355_bn"
+  type: "BatchNorm"
+  bottom: "354"
+  top: "355"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "355"
+  type: "Scale"
+  bottom: "355"
+  top: "355"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "356"
+  type: "Eltwise"
+  bottom: "347"
+  bottom: "355"
+  top: "356"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "357"
+  type: "Convolution"
+  bottom: "356"
+  top: "357"
+  convolution_param {
+    num_output: 384
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "358_bn"
+  type: "BatchNorm"
+  bottom: "357"
+  top: "358"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "358"
+  type: "Scale"
+  bottom: "358"
+  top: "358"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "359"
+  type: "ReLU"
+  bottom: "358"
+  top: "359"
+}
+layer {
+  name: "360"
+  type: "Convolution"
+  bottom: "359"
+  top: "360"
+  convolution_param {
+    num_output: 384
+    bias_term: true
+    group: 384
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "361_bn"
+  type: "BatchNorm"
+  bottom: "360"
+  top: "361"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "361"
+  type: "Scale"
+  bottom: "361"
+  top: "361"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "362"
+  type: "ReLU"
+  bottom: "361"
+  top: "362"
+}
+layer {
+  name: "363"
+  type: "Convolution"
+  bottom: "362"
+  top: "363"
+  convolution_param {
+    num_output: 64
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "364_bn"
+  type: "BatchNorm"
+  bottom: "363"
+  top: "364"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "364"
+  type: "Scale"
+  bottom: "364"
+  top: "364"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "365"
+  type: "Eltwise"
+  bottom: "356"
+  bottom: "364"
+  top: "365"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "366"
+  type: "Convolution"
+  bottom: "365"
+  top: "366"
+  convolution_param {
+    num_output: 384
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "367_bn"
+  type: "BatchNorm"
+  bottom: "366"
+  top: "367"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "367"
+  type: "Scale"
+  bottom: "367"
+  top: "367"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "368"
+  type: "ReLU"
+  bottom: "367"
+  top: "368"
+}
+layer {
+  name: "369"
+  type: "Convolution"
+  bottom: "368"
+  top: "369"
+  convolution_param {
+    num_output: 384
+    bias_term: true
+    group: 384
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "370_bn"
+  type: "BatchNorm"
+  bottom: "369"
+  top: "370"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "370"
+  type: "Scale"
+  bottom: "370"
+  top: "370"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "371"
+  type: "ReLU"
+  bottom: "370"
+  top: "371"
+}
+layer {
+  name: "372"
+  type: "Convolution"
+  bottom: "371"
+  top: "372"
+  convolution_param {
+    num_output: 64
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "373_bn"
+  type: "BatchNorm"
+  bottom: "372"
+  top: "373"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "373"
+  type: "Scale"
+  bottom: "373"
+  top: "373"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "374"
+  type: "Eltwise"
+  bottom: "365"
+  bottom: "373"
+  top: "374"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "375"
+  type: "Convolution"
+  bottom: "374"
+  top: "375"
+  convolution_param {
+    num_output: 384
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "376_bn"
+  type: "BatchNorm"
+  bottom: "375"
+  top: "376"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "376"
+  type: "Scale"
+  bottom: "376"
+  top: "376"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "377"
+  type: "ReLU"
+  bottom: "376"
+  top: "377"
+}
+layer {
+  name: "378"
+  type: "Convolution"
+  bottom: "377"
+  top: "378"
+  convolution_param {
+    num_output: 384
+    bias_term: true
+    group: 384
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "379_bn"
+  type: "BatchNorm"
+  bottom: "378"
+  top: "379"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "379"
+  type: "Scale"
+  bottom: "379"
+  top: "379"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "380"
+  type: "ReLU"
+  bottom: "379"
+  top: "380"
+}
+layer {
+  name: "381"
+  type: "Convolution"
+  bottom: "380"
+  top: "381"
+  convolution_param {
+    num_output: 96
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "382_bn"
+  type: "BatchNorm"
+  bottom: "381"
+  top: "382"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "382"
+  type: "Scale"
+  bottom: "382"
+  top: "382"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "383"
+  type: "Convolution"
+  bottom: "382"
+  top: "383"
+  convolution_param {
+    num_output: 576
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "384_bn"
+  type: "BatchNorm"
+  bottom: "383"
+  top: "384"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "384"
+  type: "Scale"
+  bottom: "384"
+  top: "384"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "385"
+  type: "ReLU"
+  bottom: "384"
+  top: "385"
+}
+layer {
+  name: "386"
+  type: "Convolution"
+  bottom: "385"
+  top: "386"
+  convolution_param {
+    num_output: 576
+    bias_term: true
+    group: 576
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "387_bn"
+  type: "BatchNorm"
+  bottom: "386"
+  top: "387"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "387"
+  type: "Scale"
+  bottom: "387"
+  top: "387"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "388"
+  type: "ReLU"
+  bottom: "387"
+  top: "388"
+}
+layer {
+  name: "389"
+  type: "Convolution"
+  bottom: "388"
+  top: "389"
+  convolution_param {
+    num_output: 96
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "390_bn"
+  type: "BatchNorm"
+  bottom: "389"
+  top: "390"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "390"
+  type: "Scale"
+  bottom: "390"
+  top: "390"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "391"
+  type: "Eltwise"
+  bottom: "382"
+  bottom: "390"
+  top: "391"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "392"
+  type: "Convolution"
+  bottom: "391"
+  top: "392"
+  convolution_param {
+    num_output: 576
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "393_bn"
+  type: "BatchNorm"
+  bottom: "392"
+  top: "393"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "393"
+  type: "Scale"
+  bottom: "393"
+  top: "393"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "394"
+  type: "ReLU"
+  bottom: "393"
+  top: "394"
+}
+layer {
+  name: "395"
+  type: "Convolution"
+  bottom: "394"
+  top: "395"
+  convolution_param {
+    num_output: 576
+    bias_term: true
+    group: 576
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "396_bn"
+  type: "BatchNorm"
+  bottom: "395"
+  top: "396"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "396"
+  type: "Scale"
+  bottom: "396"
+  top: "396"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "397"
+  type: "ReLU"
+  bottom: "396"
+  top: "397"
+}
+layer {
+  name: "398"
+  type: "Convolution"
+  bottom: "397"
+  top: "398"
+  convolution_param {
+    num_output: 96
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "399_bn"
+  type: "BatchNorm"
+  bottom: "398"
+  top: "399"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "399"
+  type: "Scale"
+  bottom: "399"
+  top: "399"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "400"
+  type: "Eltwise"
+  bottom: "391"
+  bottom: "399"
+  top: "400"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "401"
+  type: "Convolution"
+  bottom: "400"
+  top: "401"
+  convolution_param {
+    num_output: 576
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "402_bn"
+  type: "BatchNorm"
+  bottom: "401"
+  top: "402"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "402"
+  type: "Scale"
+  bottom: "402"
+  top: "402"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "403"
+  type: "ReLU"
+  bottom: "402"
+  top: "403"
+}
+layer {
+  name: "404"
+  type: "Convolution"
+  bottom: "403"
+  top: "404"
+  convolution_param {
+    num_output: 576
+    bias_term: true
+    group: 576
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 2
+    stride_w: 2
+    dilation: 1
+  }
+}
+layer {
+  name: "405_bn"
+  type: "BatchNorm"
+  bottom: "404"
+  top: "405"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "405"
+  type: "Scale"
+  bottom: "405"
+  top: "405"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "406"
+  type: "ReLU"
+  bottom: "405"
+  top: "406"
+}
+layer {
+  name: "407"
+  type: "Convolution"
+  bottom: "406"
+  top: "407"
+  convolution_param {
+    num_output: 160
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "408_bn"
+  type: "BatchNorm"
+  bottom: "407"
+  top: "408"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "408"
+  type: "Scale"
+  bottom: "408"
+  top: "408"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "409"
+  type: "Convolution"
+  bottom: "408"
+  top: "409"
+  convolution_param {
+    num_output: 960
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "410_bn"
+  type: "BatchNorm"
+  bottom: "409"
+  top: "410"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "410"
+  type: "Scale"
+  bottom: "410"
+  top: "410"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "411"
+  type: "ReLU"
+  bottom: "410"
+  top: "411"
+}
+layer {
+  name: "412"
+  type: "Convolution"
+  bottom: "411"
+  top: "412"
+  convolution_param {
+    num_output: 960
+    bias_term: true
+    group: 960
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "413_bn"
+  type: "BatchNorm"
+  bottom: "412"
+  top: "413"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "413"
+  type: "Scale"
+  bottom: "413"
+  top: "413"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "414"
+  type: "ReLU"
+  bottom: "413"
+  top: "414"
+}
+layer {
+  name: "415"
+  type: "Convolution"
+  bottom: "414"
+  top: "415"
+  convolution_param {
+    num_output: 160
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "416_bn"
+  type: "BatchNorm"
+  bottom: "415"
+  top: "416"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "416"
+  type: "Scale"
+  bottom: "416"
+  top: "416"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "417"
+  type: "Eltwise"
+  bottom: "408"
+  bottom: "416"
+  top: "417"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "418"
+  type: "Convolution"
+  bottom: "417"
+  top: "418"
+  convolution_param {
+    num_output: 960
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "419_bn"
+  type: "BatchNorm"
+  bottom: "418"
+  top: "419"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "419"
+  type: "Scale"
+  bottom: "419"
+  top: "419"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "420"
+  type: "ReLU"
+  bottom: "419"
+  top: "420"
+}
+layer {
+  name: "421"
+  type: "Convolution"
+  bottom: "420"
+  top: "421"
+  convolution_param {
+    num_output: 960
+    bias_term: true
+    group: 960
+    pad_h: 1
+    pad_w: 1
+    kernel_h: 3
+    kernel_w: 3
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "422_bn"
+  type: "BatchNorm"
+  bottom: "421"
+  top: "422"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "422"
+  type: "Scale"
+  bottom: "422"
+  top: "422"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "423"
+  type: "ReLU"
+  bottom: "422"
+  top: "423"
+}
+layer {
+  name: "424"
+  type: "Convolution"
+  bottom: "423"
+  top: "424"
+  convolution_param {
+    num_output: 160
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "425_bn"
+  type: "BatchNorm"
+  bottom: "424"
+  top: "425"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "425"
+  type: "Scale"
+  bottom: "425"
+  top: "425"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "426"
+  type: "Eltwise"
+  bottom: "417"
+  bottom: "425"
+  top: "426"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "427"
+  type: "Convolution"
+  bottom: "426"
+  top: "427"
+  convolution_param {
+    num_output: 960
+    bias_term: false
+    group: 1
+    pad_h: 0
+    pad_w: 0
+    kernel_h: 1
+    kernel_w: 1
+    stride_h: 1
+    stride_w: 1
+    dilation: 1
+  }
+}
+layer {
+  name: "428_bn"
+  type: "BatchNorm"
+  bottom: "427"
+  top: "428"
+  batch_norm_param {
+    use_global_stats: true
+    eps: 1e-05
+  }
+}
+layer {
+  name: "428"
+  type: "Scale"
+  bottom: "428"
+  top: "428"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "429"
+  type: "ReLU"
+  bottom: "428"
+  top: "429"
+}
+layer {
+  name: "430"
+  type: "Convolution"
+  bottom: "429"
+  top: "430"
+  convolution_param {
+    num_out
+I0601 17:59:48.167992 14567 layer_factory.hpp:77] Creating layer data
+I0601 17:59:48.168054 14567 net.cpp:84] Creating Layer data
+I0601 17:59:48.168074 14567 net.cpp:380] data -> data
+I0601 17:59:48.168107 14567 net.cpp:380] data -> label
+I0601 17:59:48.168139 14567 pytorch_data_layer.cpp:44] Opening file /mnt/lustre/share/imagenet/meta/val.txt
+I0601 17:59:48.187692 14567 pytorch_data_layer.cpp:69] A total of 50000 images.
+I0601 17:59:48.208802 14567 pytorch_data_layer.cpp:102] output data size: 20,3,224,224
+I0601 17:59:48.277822 14567 net.cpp:122] Setting up data
+I0601 17:59:48.277923 14567 net.cpp:129] Top shape: 20 3 224 224 (3010560)
+I0601 17:59:48.277935 14567 net.cpp:129] Top shape: 20 (20)
+I0601 17:59:48.277940 14567 net.cpp:137] Memory required for data: 12042320
+I0601 17:59:48.277957 14567 layer_factory.hpp:77] Creating layer label_data_1_split
+I0601 17:59:48.277990 14567 net.cpp:84] Creating Layer label_data_1_split
+I0601 17:59:48.278002 14567 net.cpp:406] label_data_1_split <- label
+I0601 17:59:48.278034 14567 net.cpp:380] label_data_1_split -> label_data_1_split_0
+I0601 17:59:48.278056 14567 net.cpp:380] label_data_1_split -> label_data_1_split_1
+I0601 17:59:48.278831 14567 net.cpp:122] Setting up label_data_1_split
+I0601 17:59:48.278846 14567 net.cpp:129] Top shape: 20 (20)
+I0601 17:59:48.278873 14567 net.cpp:129] Top shape: 20 (20)
+I0601 17:59:48.278879 14567 net.cpp:137] Memory required for data: 12042480
+I0601 17:59:48.278890 14567 layer_factory.hpp:77] Creating layer 286
+I0601 17:59:48.278928 14567 net.cpp:84] Creating Layer 286
+I0601 17:59:48.278939 14567 net.cpp:406] 286 <- data
+I0601 17:59:48.278955 14567 net.cpp:380] 286 -> 286
+I0601 17:59:48.291782 14567 net.cpp:122] Setting up 286
+I0601 17:59:48.291824 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.291831 14567 net.cpp:137] Memory required for data: 44155120
+I0601 17:59:48.291870 14567 layer_factory.hpp:77] Creating layer 287_bn
+I0601 17:59:48.291900 14567 net.cpp:84] Creating Layer 287_bn
+I0601 17:59:48.291906 14567 net.cpp:406] 287_bn <- 286
+I0601 17:59:48.291919 14567 net.cpp:380] 287_bn -> 287
+I0601 17:59:48.293284 14567 net.cpp:122] Setting up 287_bn
+I0601 17:59:48.293301 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.293323 14567 net.cpp:137] Memory required for data: 76267760
+I0601 17:59:48.293339 14567 layer_factory.hpp:77] Creating layer 287
+I0601 17:59:48.293359 14567 net.cpp:84] Creating Layer 287
+I0601 17:59:48.293366 14567 net.cpp:406] 287 <- 287
+I0601 17:59:48.293383 14567 net.cpp:367] 287 -> 287 (in-place)
+I0601 17:59:48.293458 14567 layer_factory.hpp:77] Creating layer 287
+I0601 17:59:48.293624 14567 net.cpp:122] Setting up 287
+I0601 17:59:48.293666 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.293674 14567 net.cpp:137] Memory required for data: 108380400
+I0601 17:59:48.293692 14567 layer_factory.hpp:77] Creating layer 288
+I0601 17:59:48.293705 14567 net.cpp:84] Creating Layer 288
+I0601 17:59:48.293715 14567 net.cpp:406] 288 <- 287
+I0601 17:59:48.293750 14567 net.cpp:380] 288 -> 288
+I0601 17:59:48.293805 14567 net.cpp:122] Setting up 288
+I0601 17:59:48.293820 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.293828 14567 net.cpp:137] Memory required for data: 140493040
+I0601 17:59:48.293834 14567 layer_factory.hpp:77] Creating layer 289
+I0601 17:59:48.293867 14567 net.cpp:84] Creating Layer 289
+I0601 17:59:48.293879 14567 net.cpp:406] 289 <- 288
+I0601 17:59:48.293889 14567 net.cpp:380] 289 -> 289
+I0601 17:59:48.294137 14567 net.cpp:122] Setting up 289
+I0601 17:59:48.294212 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.294247 14567 net.cpp:137] Memory required for data: 172605680
+I0601 17:59:48.294275 14567 layer_factory.hpp:77] Creating layer 290_bn
+I0601 17:59:48.294312 14567 net.cpp:84] Creating Layer 290_bn
+I0601 17:59:48.294325 14567 net.cpp:406] 290_bn <- 289
+I0601 17:59:48.294340 14567 net.cpp:380] 290_bn -> 290
+I0601 17:59:48.294615 14567 net.cpp:122] Setting up 290_bn
+I0601 17:59:48.294628 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.294633 14567 net.cpp:137] Memory required for data: 204718320
+I0601 17:59:48.294646 14567 layer_factory.hpp:77] Creating layer 290
+I0601 17:59:48.294657 14567 net.cpp:84] Creating Layer 290
+I0601 17:59:48.294662 14567 net.cpp:406] 290 <- 290
+I0601 17:59:48.294683 14567 net.cpp:367] 290 -> 290 (in-place)
+I0601 17:59:48.294746 14567 layer_factory.hpp:77] Creating layer 290
+I0601 17:59:48.294983 14567 net.cpp:122] Setting up 290
+I0601 17:59:48.295001 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.295008 14567 net.cpp:137] Memory required for data: 236830960
+I0601 17:59:48.295017 14567 layer_factory.hpp:77] Creating layer 291
+I0601 17:59:48.295024 14567 net.cpp:84] Creating Layer 291
+I0601 17:59:48.295029 14567 net.cpp:406] 291 <- 290
+I0601 17:59:48.295038 14567 net.cpp:380] 291 -> 291
+I0601 17:59:48.295063 14567 net.cpp:122] Setting up 291
+I0601 17:59:48.295079 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.295084 14567 net.cpp:137] Memory required for data: 268943600
+I0601 17:59:48.295089 14567 layer_factory.hpp:77] Creating layer 292
+I0601 17:59:48.295106 14567 net.cpp:84] Creating Layer 292
+I0601 17:59:48.295111 14567 net.cpp:406] 292 <- 291
+I0601 17:59:48.295131 14567 net.cpp:380] 292 -> 292
+I0601 17:59:48.295487 14567 net.cpp:122] Setting up 292
+I0601 17:59:48.295532 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.295539 14567 net.cpp:137] Memory required for data: 301056240
+I0601 17:59:48.295574 14567 layer_factory.hpp:77] Creating layer 293_bn
+I0601 17:59:48.295583 14567 net.cpp:84] Creating Layer 293_bn
+I0601 17:59:48.295588 14567 net.cpp:406] 293_bn <- 292
+I0601 17:59:48.295598 14567 net.cpp:380] 293_bn -> 293
+I0601 17:59:48.295819 14567 net.cpp:122] Setting up 293_bn
+I0601 17:59:48.295840 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.295846 14567 net.cpp:137] Memory required for data: 333168880
+I0601 17:59:48.295864 14567 layer_factory.hpp:77] Creating layer 293
+I0601 17:59:48.295894 14567 net.cpp:84] Creating Layer 293
+I0601 17:59:48.295913 14567 net.cpp:406] 293 <- 293
+I0601 17:59:48.295934 14567 net.cpp:367] 293 -> 293 (in-place)
+I0601 17:59:48.296015 14567 layer_factory.hpp:77] Creating layer 293
+I0601 17:59:48.296211 14567 net.cpp:122] Setting up 293
+I0601 17:59:48.296232 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.296236 14567 net.cpp:137] Memory required for data: 365281520
+I0601 17:59:48.296245 14567 layer_factory.hpp:77] Creating layer 294
+I0601 17:59:48.296252 14567 net.cpp:84] Creating Layer 294
+I0601 17:59:48.296257 14567 net.cpp:406] 294 <- 293
+I0601 17:59:48.296265 14567 net.cpp:380] 294 -> 294
+I0601 17:59:48.296309 14567 net.cpp:122] Setting up 294
+I0601 17:59:48.296319 14567 net.cpp:129] Top shape: 20 32 112 112 (8028160)
+I0601 17:59:48.296322 14567 net.cpp:137] Memory required for data: 397394160
+I0601 17:59:48.296327 14567 layer_factory.hpp:77] Creating layer 295
+I0601 17:59:48.296334 14567 net.cpp:84] Creating Layer 295
+I0601 17:59:48.296339 14567 net.cpp:406] 295 <- 294
+I0601 17:59:48.296349 14567 net.cpp:380] 295 -> 295
+I0601 17:59:48.296584 14567 net.cpp:122] Setting up 295
+I0601 17:59:48.296607 14567 net.cpp:129] Top shape: 20 16 112 112 (4014080)
+I0601 17:59:48.296619 14567 net.cpp:137] Memory required for data: 413450480
+I0601 17:59:48.296639 14567 layer_factory.hpp:77] Creating layer 296_bn
+I0601 17:59:48.296679 14567 net.cpp:84] Creating Layer 296_bn
+I0601 17:59:48.296689 14567 net.cpp:406] 296_bn <- 295
+I0601 17:59:48.296695 14567 net.cpp:380] 296_bn -> 296
+I0601 17:59:48.296901 14567 net.cpp:122] Setting up 296_bn
+I0601 17:59:48.296913 14567 net.cpp:129] Top shape: 20 16 112 112 (4014080)
+I0601 17:59:48.296926 14567 net.cpp:137] Memory required for data: 429506800
+I0601 17:59:48.296939 14567 layer_factory.hpp:77] Creating layer 296
+I0601 17:59:48.296954 14567 net.cpp:84] Creating Layer 296
+I0601 17:59:48.296962 14567 net.cpp:406] 296 <- 296
+I0601 17:59:48.296975 14567 net.cpp:367] 296 -> 296 (in-place)
+I0601 17:59:48.297049 14567 layer_factory.hpp:77] Creating layer 296
+I0601 17:59:48.297281 14567 net.cpp:122] Setting up 296
+I0601 17:59:48.297293 14567 net.cpp:129] Top shape: 20 16 112 112 (4014080)
+I0601 17:59:48.297297 14567 net.cpp:137] Memory required for data: 445563120
+I0601 17:59:48.297305 14567 layer_factory.hpp:77] Creating layer 297
+I0601 17:59:48.297318 14567 net.cpp:84] Creating Layer 297
+I0601 17:59:48.297323 14567 net.cpp:406] 297 <- 296
+I0601 17:59:48.297332 14567 net.cpp:380] 297 -> 297
+I0601 17:59:48.303591 14567 net.cpp:122] Setting up 297
+I0601 17:59:48.303642 14567 net.cpp:129] Top shape: 20 96 112 112 (24084480)
+I0601 17:59:48.303653 14567 net.cpp:137] Memory required for data: 541901040
+I0601 17:59:48.303668 14567 layer_factory.hpp:77] Creating layer 298_bn
+I0601 17:59:48.303689 14567 net.cpp:84] Creating Layer 298_bn
+I0601 17:59:48.303702 14567 net.cpp:406] 298_bn <- 297
+I0601 17:59:48.303716 14567 net.cpp:380] 298_bn -> 298
+I0601 17:59:48.303949 14567 net.cpp:122] Setting up 298_bn
+I0601 17:59:48.303961 14567 net.cpp:129] Top shape: 20 96 112 112 (24084480)
+I0601 17:59:48.303966 14567 net.cpp:137] Memory required for data: 638238960
+I0601 17:59:48.303974 14567 layer_factory.hpp:77] Creating layer 298
+I0601 17:59:48.303992 14567 net.cpp:84] Creating Layer 298
+I0601 17:59:48.303998 14567 net.cpp:406] 298 <- 298
+I0601 17:59:48.304005 14567 net.cpp:367] 298 -> 298 (in-place)
+I0601 17:59:48.304047 14567 layer_factory.hpp:77] Creating layer 298
+I0601 17:59:48.304183 14567 net.cpp:122] Setting up 298
+I0601 17:59:48.304193 14567 net.cpp:129] Top shape: 20 96 112 112 (24084480)
+I0601 17:59:48.304198 14567 net.cpp:137] Memory required for data: 734576880
+I0601 17:59:48.304216 14567 layer_factory.hpp:77] Creating layer 299
+I0601 17:59:48.304225 14567 net.cpp:84] Creating Layer 299
+I0601 17:59:48.304239 14567 net.cpp:406] 299 <- 298
+I0601 17:59:48.304256 14567 net.cpp:380] 299 -> 299
+I0601 17:59:48.304314 14567 net.cpp:122] Setting up 299
+I0601 17:59:48.304352 14567 net.cpp:129] Top shape: 20 96 112 112 (24084480)
+I0601 17:59:48.304370 14567 net.cpp:137] Memory required for data: 830914800
+I0601 17:59:48.304383 14567 layer_factory.hpp:77] Creating layer 300
+I0601 17:59:48.304417 14567 net.cpp:84] Creating Layer 300
+I0601 17:59:48.304437 14567 net.cpp:406] 300 <- 299
+I0601 17:59:48.304453 14567 net.cpp:380] 300 -> 300
+I0601 17:59:48.304703 14567 net.cpp:122] Setting up 300
+I0601 17:59:48.304714 14567 net.cpp:129] Top shape: 20 96 56 56 (6021120)
+I0601 17:59:48.304719 14567 net.cpp:137] Memory required for data: 854999280
+I0601 17:59:48.304735 14567 layer_factory.hpp:77] Creating layer 301_bn
+I0601 17:59:48.304742 14567 net.cpp:84] Creating Layer 301_bn
+I0601 17:59:48.304746 14567 net.cpp:406] 301_bn <- 300
+I0601 17:59:48.304769 14567 net.cpp:380] 301_bn -> 301
+I0601 17:59:48.305016 14567 net.cpp:122] Setting up 301_bn
+I0601 17:59:48.305029 14567 net.cpp:129] Top shape: 20 96 56 56 (6021120)
+I0601 17:59:48.305037 14567 net.cpp:137] Memory required for data: 879083760
+I0601 17:59:48.305050 14567 layer_factory.hpp:77] Creating layer 301
+I0601 17:59:48.305111 14567 net.cpp:84] Creating Layer 301
+I0601 17:59:48.305138 14567 net.cpp:406] 301 <- 301
+I0601 17:59:48.305153 14567 net.cpp:367] 301 -> 301 (in-place)
+I0601 17:59:48.305233 14567 layer_factory.hpp:77] Creating layer 301
+I0601 17:59:48.305399 14567 net.cpp:122] Setting up 301
+I0601 17:59:48.305410 14567 net.cpp:129] Top shape: 20 96 56 56 (6021120)
+I0601 17:59:48.305415 14567 net.cpp:137] Memory required for data: 903168240
+I0601 17:59:48.305423 14567 layer_factory.hpp:77] Creating layer 302
+I0601 17:59:48.305438 14567 net.cpp:84] Creating Layer 302
+I0601 17:59:48.305444 14567 net.cpp:406] 302 <- 301
+I0601 17:59:48.305449 14567 net.cpp:380] 302 -> 302
+I0601 17:59:48.305474 14567 net.cpp:122] Setting up 302
+I0601 17:59:48.305483 14567 net.cpp:129] Top shape: 20 96 56 56 (6021120)
+I0601 17:59:48.305487 14567 net.cpp:137] Memory required for data: 927252720
+I0601 17:59:48.305492 14567 layer_factory.hpp:77] Creating layer 303
+I0601 17:59:48.305501 14567 net.cpp:84] Creating Layer 303
+I0601 17:59:48.305505 14567 net.cpp:406] 303 <- 302
+I0601 17:59:48.305511 14567 net.cpp:380] 303 -> 303
+I0601 17:59:48.305683 14567 net.cpp:122] Setting up 303
+I0601 17:59:48.305693 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.305697 14567 net.cpp:137] Memory required for data: 933273840
+I0601 17:59:48.305707 14567 layer_factory.hpp:77] Creating layer 304_bn
+I0601 17:59:48.305733 14567 net.cpp:84] Creating Layer 304_bn
+I0601 17:59:48.305738 14567 net.cpp:406] 304_bn <- 303
+I0601 17:59:48.305743 14567 net.cpp:380] 304_bn -> 304
+I0601 17:59:48.306025 14567 net.cpp:122] Setting up 304_bn
+I0601 17:59:48.306054 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.306078 14567 net.cpp:137] Memory required for data: 939294960
+I0601 17:59:48.306109 14567 layer_factory.hpp:77] Creating layer 304
+I0601 17:59:48.306133 14567 net.cpp:84] Creating Layer 304
+I0601 17:59:48.306139 14567 net.cpp:406] 304 <- 304
+I0601 17:59:48.306149 14567 net.cpp:367] 304 -> 304 (in-place)
+I0601 17:59:48.306195 14567 layer_factory.hpp:77] Creating layer 304
+I0601 17:59:48.306326 14567 net.cpp:122] Setting up 304
+I0601 17:59:48.306336 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.306341 14567 net.cpp:137] Memory required for data: 945316080
+I0601 17:59:48.306349 14567 layer_factory.hpp:77] Creating layer 304_304_0_split
+I0601 17:59:48.306363 14567 net.cpp:84] Creating Layer 304_304_0_split
+I0601 17:59:48.306368 14567 net.cpp:406] 304_304_0_split <- 304
+I0601 17:59:48.306376 14567 net.cpp:380] 304_304_0_split -> 304_304_0_split_0
+I0601 17:59:48.306385 14567 net.cpp:380] 304_304_0_split -> 304_304_0_split_1
+I0601 17:59:48.306421 14567 net.cpp:122] Setting up 304_304_0_split
+I0601 17:59:48.306430 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.306437 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.306440 14567 net.cpp:137] Memory required for data: 957358320
+I0601 17:59:48.306447 14567 layer_factory.hpp:77] Creating layer 305
+I0601 17:59:48.306452 14567 net.cpp:84] Creating Layer 305
+I0601 17:59:48.306457 14567 net.cpp:406] 305 <- 304_304_0_split_0
+I0601 17:59:48.306468 14567 net.cpp:380] 305 -> 305
+I0601 17:59:48.306705 14567 net.cpp:122] Setting up 305
+I0601 17:59:48.306736 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.306743 14567 net.cpp:137] Memory required for data: 993485040
+I0601 17:59:48.306773 14567 layer_factory.hpp:77] Creating layer 306_bn
+I0601 17:59:48.306798 14567 net.cpp:84] Creating Layer 306_bn
+I0601 17:59:48.306810 14567 net.cpp:406] 306_bn <- 305
+I0601 17:59:48.306823 14567 net.cpp:380] 306_bn -> 306
+I0601 17:59:48.307070 14567 net.cpp:122] Setting up 306_bn
+I0601 17:59:48.307101 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.307106 14567 net.cpp:137] Memory required for data: 1029611760
+I0601 17:59:48.307116 14567 layer_factory.hpp:77] Creating layer 306
+I0601 17:59:48.307134 14567 net.cpp:84] Creating Layer 306
+I0601 17:59:48.307140 14567 net.cpp:406] 306 <- 306
+I0601 17:59:48.307147 14567 net.cpp:367] 306 -> 306 (in-place)
+I0601 17:59:48.307193 14567 layer_factory.hpp:77] Creating layer 306
+I0601 17:59:48.307322 14567 net.cpp:122] Setting up 306
+I0601 17:59:48.307333 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.307338 14567 net.cpp:137] Memory required for data: 1065738480
+I0601 17:59:48.307346 14567 layer_factory.hpp:77] Creating layer 307
+I0601 17:59:48.307358 14567 net.cpp:84] Creating Layer 307
+I0601 17:59:48.307363 14567 net.cpp:406] 307 <- 306
+I0601 17:59:48.307373 14567 net.cpp:380] 307 -> 307
+I0601 17:59:48.307399 14567 net.cpp:122] Setting up 307
+I0601 17:59:48.307410 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.307416 14567 net.cpp:137] Memory required for data: 1101865200
+I0601 17:59:48.307432 14567 layer_factory.hpp:77] Creating layer 308
+I0601 17:59:48.307480 14567 net.cpp:84] Creating Layer 308
+I0601 17:59:48.307507 14567 net.cpp:406] 308 <- 307
+I0601 17:59:48.307528 14567 net.cpp:380] 308 -> 308
+I0601 17:59:48.307821 14567 net.cpp:122] Setting up 308
+I0601 17:59:48.307832 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.307837 14567 net.cpp:137] Memory required for data: 1137991920
+I0601 17:59:48.307844 14567 layer_factory.hpp:77] Creating layer 309_bn
+I0601 17:59:48.307857 14567 net.cpp:84] Creating Layer 309_bn
+I0601 17:59:48.307862 14567 net.cpp:406] 309_bn <- 308
+I0601 17:59:48.307868 14567 net.cpp:380] 309_bn -> 309
+I0601 17:59:48.308063 14567 net.cpp:122] Setting up 309_bn
+I0601 17:59:48.308079 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.308085 14567 net.cpp:137] Memory required for data: 1174118640
+I0601 17:59:48.308094 14567 layer_factory.hpp:77] Creating layer 309
+I0601 17:59:48.308109 14567 net.cpp:84] Creating Layer 309
+I0601 17:59:48.308113 14567 net.cpp:406] 309 <- 309
+I0601 17:59:48.308121 14567 net.cpp:367] 309 -> 309 (in-place)
+I0601 17:59:48.308161 14567 layer_factory.hpp:77] Creating layer 309
+I0601 17:59:48.308279 14567 net.cpp:122] Setting up 309
+I0601 17:59:48.308290 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.308295 14567 net.cpp:137] Memory required for data: 1210245360
+I0601 17:59:48.308301 14567 layer_factory.hpp:77] Creating layer 310
+I0601 17:59:48.308307 14567 net.cpp:84] Creating Layer 310
+I0601 17:59:48.308311 14567 net.cpp:406] 310 <- 309
+I0601 17:59:48.308320 14567 net.cpp:380] 310 -> 310
+I0601 17:59:48.308341 14567 net.cpp:122] Setting up 310
+I0601 17:59:48.308349 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.308353 14567 net.cpp:137] Memory required for data: 1246372080
+I0601 17:59:48.308358 14567 layer_factory.hpp:77] Creating layer 311
+I0601 17:59:48.308372 14567 net.cpp:84] Creating Layer 311
+I0601 17:59:48.308377 14567 net.cpp:406] 311 <- 310
+I0601 17:59:48.308382 14567 net.cpp:380] 311 -> 311
+I0601 17:59:48.308553 14567 net.cpp:122] Setting up 311
+I0601 17:59:48.308563 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.308568 14567 net.cpp:137] Memory required for data: 1252393200
+I0601 17:59:48.308573 14567 layer_factory.hpp:77] Creating layer 312_bn
+I0601 17:59:48.308579 14567 net.cpp:84] Creating Layer 312_bn
+I0601 17:59:48.308584 14567 net.cpp:406] 312_bn <- 311
+I0601 17:59:48.308593 14567 net.cpp:380] 312_bn -> 312
+I0601 17:59:48.308791 14567 net.cpp:122] Setting up 312_bn
+I0601 17:59:48.308802 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.308806 14567 net.cpp:137] Memory required for data: 1258414320
+I0601 17:59:48.308815 14567 layer_factory.hpp:77] Creating layer 312
+I0601 17:59:48.308828 14567 net.cpp:84] Creating Layer 312
+I0601 17:59:48.308833 14567 net.cpp:406] 312 <- 312
+I0601 17:59:48.308840 14567 net.cpp:367] 312 -> 312 (in-place)
+I0601 17:59:48.308892 14567 layer_factory.hpp:77] Creating layer 312
+I0601 17:59:48.309013 14567 net.cpp:122] Setting up 312
+I0601 17:59:48.309025 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.309028 14567 net.cpp:137] Memory required for data: 1264435440
+I0601 17:59:48.309036 14567 layer_factory.hpp:77] Creating layer 313
+I0601 17:59:48.309048 14567 net.cpp:84] Creating Layer 313
+I0601 17:59:48.309053 14567 net.cpp:406] 313 <- 304_304_0_split_1
+I0601 17:59:48.309070 14567 net.cpp:406] 313 <- 312
+I0601 17:59:48.309080 14567 net.cpp:380] 313 -> 313
+I0601 17:59:48.309136 14567 net.cpp:122] Setting up 313
+I0601 17:59:48.309146 14567 net.cpp:129] Top shape: 20 24 56 56 (1505280)
+I0601 17:59:48.309151 14567 net.cpp:137] Memory required for data: 1270456560
+I0601 17:59:48.309156 14567 layer_factory.hpp:77] Creating layer 314
+I0601 17:59:48.309162 14567 net.cpp:84] Creating Layer 314
+I0601 17:59:48.309167 14567 net.cpp:406] 314 <- 313
+I0601 17:59:48.309176 14567 net.cpp:380] 314 -> 314
+I0601 17:59:48.310437 14567 net.cpp:122] Setting up 314
+I0601 17:59:48.310500 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.310508 14567 net.cpp:137] Memory required for data: 1306583280
+I0601 17:59:48.310544 14567 layer_factory.hpp:77] Creating layer 315_bn
+I0601 17:59:48.310570 14567 net.cpp:84] Creating Layer 315_bn
+I0601 17:59:48.310578 14567 net.cpp:406] 315_bn <- 314
+I0601 17:59:48.310588 14567 net.cpp:380] 315_bn -> 315
+I0601 17:59:48.310902 14567 net.cpp:122] Setting up 315_bn
+I0601 17:59:48.310917 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.310925 14567 net.cpp:137] Memory required for data: 1342710000
+I0601 17:59:48.310940 14567 layer_factory.hpp:77] Creating layer 315
+I0601 17:59:48.310947 14567 net.cpp:84] Creating Layer 315
+I0601 17:59:48.310955 14567 net.cpp:406] 315 <- 315
+I0601 17:59:48.310966 14567 net.cpp:367] 315 -> 315 (in-place)
+I0601 17:59:48.311023 14567 layer_factory.hpp:77] Creating layer 315
+I0601 17:59:48.311189 14567 net.cpp:122] Setting up 315
+I0601 17:59:48.311205 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.311213 14567 net.cpp:137] Memory required for data: 1378836720
+I0601 17:59:48.311226 14567 layer_factory.hpp:77] Creating layer 316
+I0601 17:59:48.311237 14567 net.cpp:84] Creating Layer 316
+I0601 17:59:48.311265 14567 net.cpp:406] 316 <- 315
+I0601 17:59:48.311281 14567 net.cpp:380] 316 -> 316
+I0601 17:59:48.311314 14567 net.cpp:122] Setting up 316
+I0601 17:59:48.311349 14567 net.cpp:129] Top shape: 20 144 56 56 (9031680)
+I0601 17:59:48.311359 14567 net.cpp:137] Memory required for data: 1414963440
+I0601 17:59:48.311367 14567 layer_factory.hpp:77] Creating layer 317
+I0601 17:59:48.311377 14567 net.cpp:84] Creating Layer 317
+I0601 17:59:48.311383 14567 net.cpp:406] 317 <- 316
+I0601 17:59:48.311405 14567 net.cpp:380] 317 -> 317
+I0601 17:59:48.311722 14567 net.cpp:122] Setting up 317
+I0601 17:59:48.311736 14567 net.cpp:129] Top shape: 20 144 28 28 (2257920)
+I0601 17:59:48.311743 14567 net.cpp:137] Memory required for data: 1423995120
+I0601 17:59:48.311763 14567 layer_factory.hpp:77] Creating layer 318_bn
+I0601 17:59:48.311781 14567 net.cpp:84] Creating Layer 318_bn
+I0601 17:59:48.311789 14567 net.cpp:406] 318_bn <- 317
+I0601 17:59:48.311802 14567 net.cpp:380] 318_bn -> 318
+I0601 17:59:48.312317 14567 net.cpp:122] Setting up 318_bn
+I0601 17:59:48.312331 14567 net.cpp:129] Top shape: 20 144 28 28 (2257920)
+I0601 17:59:48.312335 14567 net.cpp:137] Memory required for data: 1433026800
+I0601 17:59:48.312345 14567 layer_factory.hpp:77] Creating layer 318
+I0601 17:59:48.312357 14567 net.cpp:84] Creating Layer 318
+I0601 17:59:48.312362 14567 net.cpp:406] 318 <- 318
+I0601 17:59:48.312368 14567 net.cpp:367] 318 -> 318 (in-place)
+I0601 17:59:48.312412 14567 layer_factory.hpp:77] Creating layer 318
+I0601 17:59:48.312533 14567 net.cpp:122] Setting up 318
+I0601 17:59:48.312543 14567 net.cpp:129] Top shape: 20 144 28 28 (2257920)
+I0601 17:59:48.312548 14567 net.cpp:137] Memory required for data: 1442058480
+I0601 17:59:48.312556 14567 layer_factory.hpp:77] Creating layer 319
+I0601 17:59:48.312577 14567 net.cpp:84] Creating Layer 319
+I0601 17:59:48.312582 14567 net.cpp:406] 319 <- 318
+I0601 17:59:48.312587 14567 net.cpp:380] 319 -> 319
+I0601 17:59:48.312613 14567 net.cpp:122] Setting up 319
+I0601 17:59:48.312620 14567 net.cpp:129] Top shape: 20 144 28 28 (2257920)
+I0601 17:59:48.312624 14567 net.cpp:137] Memory required for data: 1451090160
+I0601 17:59:48.312628 14567 layer_factory.hpp:77] Creating layer 320
+I0601 17:59:48.312638 14567 net.cpp:84] Creating Layer 320
+I0601 17:59:48.312644 14567 net.cpp:406] 320 <- 319
+I0601 17:59:48.312659 14567 net.cpp:380] 320 -> 320
+I0601 17:59:48.312944 14567 net.cpp:122] Setting up 320
+I0601 17:59:48.312975 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.312984 14567 net.cpp:137] Memory required for data: 1453097200
+I0601 17:59:48.312990 14567 layer_factory.hpp:77] Creating layer 321_bn
+I0601 17:59:48.313025 14567 net.cpp:84] Creating Layer 321_bn
+I0601 17:59:48.313032 14567 net.cpp:406] 321_bn <- 320
+I0601 17:59:48.313038 14567 net.cpp:380] 321_bn -> 321
+I0601 17:59:48.313244 14567 net.cpp:122] Setting up 321_bn
+I0601 17:59:48.313257 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.313262 14567 net.cpp:137] Memory required for data: 1455104240
+I0601 17:59:48.313278 14567 layer_factory.hpp:77] Creating layer 321
+I0601 17:59:48.313285 14567 net.cpp:84] Creating Layer 321
+I0601 17:59:48.313290 14567 net.cpp:406] 321 <- 321
+I0601 17:59:48.313298 14567 net.cpp:367] 321 -> 321 (in-place)
+I0601 17:59:48.313338 14567 layer_factory.hpp:77] Creating layer 321
+I0601 17:59:48.313477 14567 net.cpp:122] Setting up 321
+I0601 17:59:48.313489 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.313501 14567 net.cpp:137] Memory required for data: 1457111280
+I0601 17:59:48.313513 14567 layer_factory.hpp:77] Creating layer 321_321_0_split
+I0601 17:59:48.313521 14567 net.cpp:84] Creating Layer 321_321_0_split
+I0601 17:59:48.313529 14567 net.cpp:406] 321_321_0_split <- 321
+I0601 17:59:48.313540 14567 net.cpp:380] 321_321_0_split -> 321_321_0_split_0
+I0601 17:59:48.313560 14567 net.cpp:380] 321_321_0_split -> 321_321_0_split_1
+I0601 17:59:48.313623 14567 net.cpp:122] Setting up 321_321_0_split
+I0601 17:59:48.313664 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.313681 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.313693 14567 net.cpp:137] Memory required for data: 1461125360
+I0601 17:59:48.313702 14567 layer_factory.hpp:77] Creating layer 322
+I0601 17:59:48.313719 14567 net.cpp:84] Creating Layer 322
+I0601 17:59:48.313736 14567 net.cpp:406] 322 <- 321_321_0_split_0
+I0601 17:59:48.313758 14567 net.cpp:380] 322 -> 322
+I0601 17:59:48.313976 14567 net.cpp:122] Setting up 322
+I0601 17:59:48.313987 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.313992 14567 net.cpp:137] Memory required for data: 1473167600
+I0601 17:59:48.313997 14567 layer_factory.hpp:77] Creating layer 323_bn
+I0601 17:59:48.314013 14567 net.cpp:84] Creating Layer 323_bn
+I0601 17:59:48.314018 14567 net.cpp:406] 323_bn <- 322
+I0601 17:59:48.314024 14567 net.cpp:380] 323_bn -> 323
+I0601 17:59:48.314227 14567 net.cpp:122] Setting up 323_bn
+I0601 17:59:48.314239 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.314242 14567 net.cpp:137] Memory required for data: 1485209840
+I0601 17:59:48.314263 14567 layer_factory.hpp:77] Creating layer 323
+I0601 17:59:48.314272 14567 net.cpp:84] Creating Layer 323
+I0601 17:59:48.314277 14567 net.cpp:406] 323 <- 323
+I0601 17:59:48.314283 14567 net.cpp:367] 323 -> 323 (in-place)
+I0601 17:59:48.314326 14567 layer_factory.hpp:77] Creating layer 323
+I0601 17:59:48.314456 14567 net.cpp:122] Setting up 323
+I0601 17:59:48.314471 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.314483 14567 net.cpp:137] Memory required for data: 1497252080
+I0601 17:59:48.314524 14567 layer_factory.hpp:77] Creating layer 324
+I0601 17:59:48.314559 14567 net.cpp:84] Creating Layer 324
+I0601 17:59:48.314566 14567 net.cpp:406] 324 <- 323
+I0601 17:59:48.314592 14567 net.cpp:380] 324 -> 324
+I0601 17:59:48.314625 14567 net.cpp:122] Setting up 324
+I0601 17:59:48.314638 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.314644 14567 net.cpp:137] Memory required for data: 1509294320
+I0601 17:59:48.314651 14567 layer_factory.hpp:77] Creating layer 325
+I0601 17:59:48.314662 14567 net.cpp:84] Creating Layer 325
+I0601 17:59:48.314668 14567 net.cpp:406] 325 <- 324
+I0601 17:59:48.314677 14567 net.cpp:380] 325 -> 325
+I0601 17:59:48.314961 14567 net.cpp:122] Setting up 325
+I0601 17:59:48.314973 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.314978 14567 net.cpp:137] Memory required for data: 1521336560
+I0601 17:59:48.314986 14567 layer_factory.hpp:77] Creating layer 326_bn
+I0601 17:59:48.315003 14567 net.cpp:84] Creating Layer 326_bn
+I0601 17:59:48.315008 14567 net.cpp:406] 326_bn <- 325
+I0601 17:59:48.315030 14567 net.cpp:380] 326_bn -> 326
+I0601 17:59:48.315299 14567 net.cpp:122] Setting up 326_bn
+I0601 17:59:48.315341 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.315361 14567 net.cpp:137] Memory required for data: 1533378800
+I0601 17:59:48.315392 14567 layer_factory.hpp:77] Creating layer 326
+I0601 17:59:48.315426 14567 net.cpp:84] Creating Layer 326
+I0601 17:59:48.315439 14567 net.cpp:406] 326 <- 326
+I0601 17:59:48.315449 14567 net.cpp:367] 326 -> 326 (in-place)
+I0601 17:59:48.315497 14567 layer_factory.hpp:77] Creating layer 326
+I0601 17:59:48.315620 14567 net.cpp:122] Setting up 326
+I0601 17:59:48.315631 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.315635 14567 net.cpp:137] Memory required for data: 1545421040
+I0601 17:59:48.315644 14567 layer_factory.hpp:77] Creating layer 327
+I0601 17:59:48.315650 14567 net.cpp:84] Creating Layer 327
+I0601 17:59:48.315654 14567 net.cpp:406] 327 <- 326
+I0601 17:59:48.315663 14567 net.cpp:380] 327 -> 327
+I0601 17:59:48.315685 14567 net.cpp:122] Setting up 327
+I0601 17:59:48.315692 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.315696 14567 net.cpp:137] Memory required for data: 1557463280
+I0601 17:59:48.315701 14567 layer_factory.hpp:77] Creating layer 328
+I0601 17:59:48.315712 14567 net.cpp:84] Creating Layer 328
+I0601 17:59:48.315717 14567 net.cpp:406] 328 <- 327
+I0601 17:59:48.315723 14567 net.cpp:380] 328 -> 328
+I0601 17:59:48.315914 14567 net.cpp:122] Setting up 328
+I0601 17:59:48.315925 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.315929 14567 net.cpp:137] Memory required for data: 1559470320
+I0601 17:59:48.315938 14567 layer_factory.hpp:77] Creating layer 329_bn
+I0601 17:59:48.315961 14567 net.cpp:84] Creating Layer 329_bn
+I0601 17:59:48.315971 14567 net.cpp:406] 329_bn <- 328
+I0601 17:59:48.315979 14567 net.cpp:380] 329_bn -> 329
+I0601 17:59:48.316293 14567 net.cpp:122] Setting up 329_bn
+I0601 17:59:48.316304 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.316309 14567 net.cpp:137] Memory required for data: 1561477360
+I0601 17:59:48.316319 14567 layer_factory.hpp:77] Creating layer 329
+I0601 17:59:48.316325 14567 net.cpp:84] Creating Layer 329
+I0601 17:59:48.316330 14567 net.cpp:406] 329 <- 329
+I0601 17:59:48.316344 14567 net.cpp:367] 329 -> 329 (in-place)
+I0601 17:59:48.316387 14567 layer_factory.hpp:77] Creating layer 329
+I0601 17:59:48.316519 14567 net.cpp:122] Setting up 329
+I0601 17:59:48.316530 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.316534 14567 net.cpp:137] Memory required for data: 1563484400
+I0601 17:59:48.316551 14567 layer_factory.hpp:77] Creating layer 330
+I0601 17:59:48.316572 14567 net.cpp:84] Creating Layer 330
+I0601 17:59:48.316578 14567 net.cpp:406] 330 <- 321_321_0_split_1
+I0601 17:59:48.316584 14567 net.cpp:406] 330 <- 329
+I0601 17:59:48.316591 14567 net.cpp:380] 330 -> 330
+I0601 17:59:48.316618 14567 net.cpp:122] Setting up 330
+I0601 17:59:48.316627 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.316632 14567 net.cpp:137] Memory required for data: 1565491440
+I0601 17:59:48.316637 14567 layer_factory.hpp:77] Creating layer 330_330_0_split
+I0601 17:59:48.316656 14567 net.cpp:84] Creating Layer 330_330_0_split
+I0601 17:59:48.316661 14567 net.cpp:406] 330_330_0_split <- 330
+I0601 17:59:48.316675 14567 net.cpp:380] 330_330_0_split -> 330_330_0_split_0
+I0601 17:59:48.316687 14567 net.cpp:380] 330_330_0_split -> 330_330_0_split_1
+I0601 17:59:48.316740 14567 net.cpp:122] Setting up 330_330_0_split
+I0601 17:59:48.316768 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.316790 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.316809 14567 net.cpp:137] Memory required for data: 1569505520
+I0601 17:59:48.316823 14567 layer_factory.hpp:77] Creating layer 331
+I0601 17:59:48.316887 14567 net.cpp:84] Creating Layer 331
+I0601 17:59:48.316903 14567 net.cpp:406] 331 <- 330_330_0_split_0
+I0601 17:59:48.316941 14567 net.cpp:380] 331 -> 331
+I0601 17:59:48.317157 14567 net.cpp:122] Setting up 331
+I0601 17:59:48.317169 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.317173 14567 net.cpp:137] Memory required for data: 1581547760
+I0601 17:59:48.317180 14567 layer_factory.hpp:77] Creating layer 332_bn
+I0601 17:59:48.317194 14567 net.cpp:84] Creating Layer 332_bn
+I0601 17:59:48.317200 14567 net.cpp:406] 332_bn <- 331
+I0601 17:59:48.317206 14567 net.cpp:380] 332_bn -> 332
+I0601 17:59:48.317426 14567 net.cpp:122] Setting up 332_bn
+I0601 17:59:48.317440 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.317445 14567 net.cpp:137] Memory required for data: 1593590000
+I0601 17:59:48.317467 14567 layer_factory.hpp:77] Creating layer 332
+I0601 17:59:48.317481 14567 net.cpp:84] Creating Layer 332
+I0601 17:59:48.317487 14567 net.cpp:406] 332 <- 332
+I0601 17:59:48.317498 14567 net.cpp:367] 332 -> 332 (in-place)
+I0601 17:59:48.317565 14567 layer_factory.hpp:77] Creating layer 332
+I0601 17:59:48.317754 14567 net.cpp:122] Setting up 332
+I0601 17:59:48.317765 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.317770 14567 net.cpp:137] Memory required for data: 1605632240
+I0601 17:59:48.317777 14567 layer_factory.hpp:77] Creating layer 333
+I0601 17:59:48.317786 14567 net.cpp:84] Creating Layer 333
+I0601 17:59:48.317791 14567 net.cpp:406] 333 <- 332
+I0601 17:59:48.317797 14567 net.cpp:380] 333 -> 333
+I0601 17:59:48.317819 14567 net.cpp:122] Setting up 333
+I0601 17:59:48.317829 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.317834 14567 net.cpp:137] Memory required for data: 1617674480
+I0601 17:59:48.317838 14567 layer_factory.hpp:77] Creating layer 334
+I0601 17:59:48.317867 14567 net.cpp:84] Creating Layer 334
+I0601 17:59:48.317873 14567 net.cpp:406] 334 <- 333
+I0601 17:59:48.317885 14567 net.cpp:380] 334 -> 334
+I0601 17:59:48.318131 14567 net.cpp:122] Setting up 334
+I0601 17:59:48.318143 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.318148 14567 net.cpp:137] Memory required for data: 1629716720
+I0601 17:59:48.318156 14567 layer_factory.hpp:77] Creating layer 335_bn
+I0601 17:59:48.318163 14567 net.cpp:84] Creating Layer 335_bn
+I0601 17:59:48.318176 14567 net.cpp:406] 335_bn <- 334
+I0601 17:59:48.318186 14567 net.cpp:380] 335_bn -> 335
+I0601 17:59:48.318536 14567 net.cpp:122] Setting up 335_bn
+I0601 17:59:48.318547 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.318567 14567 net.cpp:137] Memory required for data: 1641758960
+I0601 17:59:48.318576 14567 layer_factory.hpp:77] Creating layer 335
+I0601 17:59:48.318591 14567 net.cpp:84] Creating Layer 335
+I0601 17:59:48.318598 14567 net.cpp:406] 335 <- 335
+I0601 17:59:48.318604 14567 net.cpp:367] 335 -> 335 (in-place)
+I0601 17:59:48.318652 14567 layer_factory.hpp:77] Creating layer 335
+I0601 17:59:48.318775 14567 net.cpp:122] Setting up 335
+I0601 17:59:48.318789 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.318792 14567 net.cpp:137] Memory required for data: 1653801200
+I0601 17:59:48.318807 14567 layer_factory.hpp:77] Creating layer 336
+I0601 17:59:48.318815 14567 net.cpp:84] Creating Layer 336
+I0601 17:59:48.318820 14567 net.cpp:406] 336 <- 335
+I0601 17:59:48.318826 14567 net.cpp:380] 336 -> 336
+I0601 17:59:48.318871 14567 net.cpp:122] Setting up 336
+I0601 17:59:48.318881 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.318886 14567 net.cpp:137] Memory required for data: 1665843440
+I0601 17:59:48.318891 14567 layer_factory.hpp:77] Creating layer 337
+I0601 17:59:48.318904 14567 net.cpp:84] Creating Layer 337
+I0601 17:59:48.318910 14567 net.cpp:406] 337 <- 336
+I0601 17:59:48.318917 14567 net.cpp:380] 337 -> 337
+I0601 17:59:48.319124 14567 net.cpp:122] Setting up 337
+I0601 17:59:48.319180 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.319200 14567 net.cpp:137] Memory required for data: 1667850480
+I0601 17:59:48.319222 14567 layer_factory.hpp:77] Creating layer 338_bn
+I0601 17:59:48.319241 14567 net.cpp:84] Creating Layer 338_bn
+I0601 17:59:48.319248 14567 net.cpp:406] 338_bn <- 337
+I0601 17:59:48.319258 14567 net.cpp:380] 338_bn -> 338
+I0601 17:59:48.319576 14567 net.cpp:122] Setting up 338_bn
+I0601 17:59:48.319588 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.319610 14567 net.cpp:137] Memory required for data: 1669857520
+I0601 17:59:48.319620 14567 layer_factory.hpp:77] Creating layer 338
+I0601 17:59:48.319627 14567 net.cpp:84] Creating Layer 338
+I0601 17:59:48.319631 14567 net.cpp:406] 338 <- 338
+I0601 17:59:48.319638 14567 net.cpp:367] 338 -> 338 (in-place)
+I0601 17:59:48.319684 14567 layer_factory.hpp:77] Creating layer 338
+I0601 17:59:48.319823 14567 net.cpp:122] Setting up 338
+I0601 17:59:48.319838 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.319845 14567 net.cpp:137] Memory required for data: 1671864560
+I0601 17:59:48.319867 14567 layer_factory.hpp:77] Creating layer 339
+I0601 17:59:48.319885 14567 net.cpp:84] Creating Layer 339
+I0601 17:59:48.319891 14567 net.cpp:406] 339 <- 330_330_0_split_1
+I0601 17:59:48.319898 14567 net.cpp:406] 339 <- 338
+I0601 17:59:48.319907 14567 net.cpp:380] 339 -> 339
+I0601 17:59:48.319934 14567 net.cpp:122] Setting up 339
+I0601 17:59:48.319947 14567 net.cpp:129] Top shape: 20 32 28 28 (501760)
+I0601 17:59:48.319952 14567 net.cpp:137] Memory required for data: 1673871600
+I0601 17:59:48.319955 14567 layer_factory.hpp:77] Creating layer 340
+I0601 17:59:48.319963 14567 net.cpp:84] Creating Layer 340
+I0601 17:59:48.319967 14567 net.cpp:406] 340 <- 339
+I0601 17:59:48.319978 14567 net.cpp:380] 340 -> 340
+I0601 17:59:48.320178 14567 net.cpp:122] Setting up 340
+I0601 17:59:48.320190 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.320195 14567 net.cpp:137] Memory required for data: 1685913840
+I0601 17:59:48.320201 14567 layer_factory.hpp:77] Creating layer 341_bn
+I0601 17:59:48.320209 14567 net.cpp:84] Creating Layer 341_bn
+I0601 17:59:48.320214 14567 net.cpp:406] 341_bn <- 340
+I0601 17:59:48.320221 14567 net.cpp:380] 341_bn -> 341
+I0601 17:59:48.320513 14567 net.cpp:122] Setting up 341_bn
+I0601 17:59:48.320570 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.320582 14567 net.cpp:137] Memory required for data: 1697956080
+I0601 17:59:48.320605 14567 layer_factory.hpp:77] Creating layer 341
+I0601 17:59:48.320633 14567 net.cpp:84] Creating Layer 341
+I0601 17:59:48.320662 14567 net.cpp:406] 341 <- 341
+I0601 17:59:48.320668 14567 net.cpp:367] 341 -> 341 (in-place)
+I0601 17:59:48.320718 14567 layer_factory.hpp:77] Creating layer 341
+I0601 17:59:48.320840 14567 net.cpp:122] Setting up 341
+I0601 17:59:48.320853 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.320858 14567 net.cpp:137] Memory required for data: 1709998320
+I0601 17:59:48.320866 14567 layer_factory.hpp:77] Creating layer 342
+I0601 17:59:48.320880 14567 net.cpp:84] Creating Layer 342
+I0601 17:59:48.320885 14567 net.cpp:406] 342 <- 341
+I0601 17:59:48.320891 14567 net.cpp:380] 342 -> 342
+I0601 17:59:48.320921 14567 net.cpp:122] Setting up 342
+I0601 17:59:48.320931 14567 net.cpp:129] Top shape: 20 192 28 28 (3010560)
+I0601 17:59:48.320936 14567 net.cpp:137] Memory required for data: 1722040560
+I0601 17:59:48.320941 14567 layer_factory.hpp:77] Creating layer 343
+I0601 17:59:48.320960 14567 net.cpp:84] Creating Layer 343
+I0601 17:59:48.320966 14567 net.cpp:406] 343 <- 342
+I0601 17:59:48.320971 14567 net.cpp:380] 343 -> 343
+I0601 17:59:48.321261 14567 net.cpp:122] Setting up 343
+I0601 17:59:48.321308 14567 net.cpp:129] Top shape: 20 192 14 14 (752640)
+I0601 17:59:48.321322 14567 net.cpp:137] Memory required for data: 1725051120
+I0601 17:59:48.321395 14567 layer_factory.hpp:77] Creating layer 344_bn
+I0601 17:59:48.321418 14567 net.cpp:84] Creating Layer 344_bn
+I0601 17:59:48.321444 14567 net.cpp:406] 344_bn <- 343
+I0601 17:59:48.321455 14567 net.cpp:380] 344_bn -> 344
+I0601 17:59:48.321907 14567 net.cpp:122] Setting up 344_bn
+I0601 17:59:48.321923 14567 net.cpp:129] Top shape: 20 192 14 14 (752640)
+I0601 17:59:48.321928 14567 net.cpp:137] Memory required for data: 1728061680
+I0601 17:59:48.321938 14567 layer_factory.hpp:77] Creating layer 344
+I0601 17:59:48.321951 14567 net.cpp:84] Creating Layer 344
+I0601 17:59:48.321957 14567 net.cpp:406] 344 <- 344
+I0601 17:59:48.321964 14567 net.cpp:367] 344 -> 344 (in-place)
+I0601 17:59:48.322007 14567 layer_factory.hpp:77] Creating layer 344
+I0601 17:59:48.322168 14567 net.cpp:122] Setting up 344
+I0601 17:59:48.322207 14567 net.cpp:129] Top shape: 20 192 14 14 (752640)
+I0601 17:59:48.322227 14567 net.cpp:137] Memory required for data: 1731072240
+I0601 17:59:48.322265 14567 layer_factory.hpp:77] Creating layer 345
+I0601 17:59:48.322285 14567 net.cpp:84] Creating Layer 345
+I0601 17:59:48.322309 14567 net.cpp:406] 345 <- 344
+I0601 17:59:48.322324 14567 net.cpp:380] 345 -> 345
+I0601 17:59:48.322379 14567 net.cpp:122] Setting up 345
+I0601 17:59:48.322407 14567 net.cpp:129] Top shape: 20 192 14 14 (752640)
+I0601 17:59:48.322412 14567 net.cpp:137] Memory required for data: 1734082800
+I0601 17:59:48.322425 14567 layer_factory.hpp:77] Creating layer 346
+I0601 17:59:48.322438 14567 net.cpp:84] Creating Layer 346
+I0601 17:59:48.322443 14567 net.cpp:406] 346 <- 345
+I0601 17:59:48.322448 14567 net.cpp:380] 346 -> 346
+I0601 17:59:48.322649 14567 net.cpp:122] Setting up 346
+I0601 17:59:48.322669 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.322675 14567 net.cpp:137] Memory required for data: 1735086320
+I0601 17:59:48.322685 14567 layer_factory.hpp:77] Creating layer 347_bn
+I0601 17:59:48.322706 14567 net.cpp:84] Creating Layer 347_bn
+I0601 17:59:48.322721 14567 net.cpp:406] 347_bn <- 346
+I0601 17:59:48.322749 14567 net.cpp:380] 347_bn -> 347
+I0601 17:59:48.323074 14567 net.cpp:122] Setting up 347_bn
+I0601 17:59:48.323088 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.323093 14567 net.cpp:137] Memory required for data: 1736089840
+I0601 17:59:48.323102 14567 layer_factory.hpp:77] Creating layer 347
+I0601 17:59:48.323109 14567 net.cpp:84] Creating Layer 347
+I0601 17:59:48.323114 14567 net.cpp:406] 347 <- 347
+I0601 17:59:48.323120 14567 net.cpp:367] 347 -> 347 (in-place)
+I0601 17:59:48.323169 14567 layer_factory.hpp:77] Creating layer 347
+I0601 17:59:48.323289 14567 net.cpp:122] Setting up 347
+I0601 17:59:48.323309 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.323315 14567 net.cpp:137] Memory required for data: 1737093360
+I0601 17:59:48.323326 14567 layer_factory.hpp:77] Creating layer 347_347_0_split
+I0601 17:59:48.323348 14567 net.cpp:84] Creating Layer 347_347_0_split
+I0601 17:59:48.323366 14567 net.cpp:406] 347_347_0_split <- 347
+I0601 17:59:48.323390 14567 net.cpp:380] 347_347_0_split -> 347_347_0_split_0
+I0601 17:59:48.323416 14567 net.cpp:380] 347_347_0_split -> 347_347_0_split_1
+I0601 17:59:48.323504 14567 net.cpp:122] Setting up 347_347_0_split
+I0601 17:59:48.323527 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.323536 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.323542 14567 net.cpp:137] Memory required for data: 1739100400
+I0601 17:59:48.323559 14567 layer_factory.hpp:77] Creating layer 348
+I0601 17:59:48.323570 14567 net.cpp:84] Creating Layer 348
+I0601 17:59:48.323576 14567 net.cpp:406] 348 <- 347_347_0_split_0
+I0601 17:59:48.323583 14567 net.cpp:380] 348 -> 348
+I0601 17:59:48.328914 14567 net.cpp:122] Setting up 348
+I0601 17:59:48.328933 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.328953 14567 net.cpp:137] Memory required for data: 1745121520
+I0601 17:59:48.328960 14567 layer_factory.hpp:77] Creating layer 349_bn
+I0601 17:59:48.328970 14567 net.cpp:84] Creating Layer 349_bn
+I0601 17:59:48.328976 14567 net.cpp:406] 349_bn <- 348
+I0601 17:59:48.328984 14567 net.cpp:380] 349_bn -> 349
+I0601 17:59:48.329215 14567 net.cpp:122] Setting up 349_bn
+I0601 17:59:48.329226 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.329231 14567 net.cpp:137] Memory required for data: 1751142640
+I0601 17:59:48.329241 14567 layer_factory.hpp:77] Creating layer 349
+I0601 17:59:48.329258 14567 net.cpp:84] Creating Layer 349
+I0601 17:59:48.329267 14567 net.cpp:406] 349 <- 349
+I0601 17:59:48.329277 14567 net.cpp:367] 349 -> 349 (in-place)
+I0601 17:59:48.329332 14567 layer_factory.hpp:77] Creating layer 349
+I0601 17:59:48.329504 14567 net.cpp:122] Setting up 349
+I0601 17:59:48.329521 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.329530 14567 net.cpp:137] Memory required for data: 1757163760
+I0601 17:59:48.329540 14567 layer_factory.hpp:77] Creating layer 350
+I0601 17:59:48.329550 14567 net.cpp:84] Creating Layer 350
+I0601 17:59:48.329556 14567 net.cpp:406] 350 <- 349
+I0601 17:59:48.329566 14567 net.cpp:380] 350 -> 350
+I0601 17:59:48.329623 14567 net.cpp:122] Setting up 350
+I0601 17:59:48.329636 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.329643 14567 net.cpp:137] Memory required for data: 1763184880
+I0601 17:59:48.329672 14567 layer_factory.hpp:77] Creating layer 351
+I0601 17:59:48.329751 14567 net.cpp:84] Creating Layer 351
+I0601 17:59:48.329798 14567 net.cpp:406] 351 <- 350
+I0601 17:59:48.329818 14567 net.cpp:380] 351 -> 351
+I0601 17:59:48.330114 14567 net.cpp:122] Setting up 351
+I0601 17:59:48.330127 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.330132 14567 net.cpp:137] Memory required for data: 1769206000
+I0601 17:59:48.330140 14567 layer_factory.hpp:77] Creating layer 352_bn
+I0601 17:59:48.330147 14567 net.cpp:84] Creating Layer 352_bn
+I0601 17:59:48.330152 14567 net.cpp:406] 352_bn <- 351
+I0601 17:59:48.330162 14567 net.cpp:380] 352_bn -> 352
+I0601 17:59:48.330389 14567 net.cpp:122] Setting up 352_bn
+I0601 17:59:48.330402 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.330406 14567 net.cpp:137] Memory required for data: 1775227120
+I0601 17:59:48.330416 14567 layer_factory.hpp:77] Creating layer 352
+I0601 17:59:48.330432 14567 net.cpp:84] Creating Layer 352
+I0601 17:59:48.330441 14567 net.cpp:406] 352 <- 352
+I0601 17:59:48.330447 14567 net.cpp:367] 352 -> 352 (in-place)
+I0601 17:59:48.330498 14567 layer_factory.hpp:77] Creating layer 352
+I0601 17:59:48.330687 14567 net.cpp:122] Setting up 352
+I0601 17:59:48.330709 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.330715 14567 net.cpp:137] Memory required for data: 1781248240
+I0601 17:59:48.330746 14567 layer_factory.hpp:77] Creating layer 353
+I0601 17:59:48.330772 14567 net.cpp:84] Creating Layer 353
+I0601 17:59:48.330777 14567 net.cpp:406] 353 <- 352
+I0601 17:59:48.330785 14567 net.cpp:380] 353 -> 353
+I0601 17:59:48.330811 14567 net.cpp:122] Setting up 353
+I0601 17:59:48.330821 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.330824 14567 net.cpp:137] Memory required for data: 1787269360
+I0601 17:59:48.330829 14567 layer_factory.hpp:77] Creating layer 354
+I0601 17:59:48.330838 14567 net.cpp:84] Creating Layer 354
+I0601 17:59:48.330843 14567 net.cpp:406] 354 <- 353
+I0601 17:59:48.330849 14567 net.cpp:380] 354 -> 354
+I0601 17:59:48.331063 14567 net.cpp:122] Setting up 354
+I0601 17:59:48.331091 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.331110 14567 net.cpp:137] Memory required for data: 1788272880
+I0601 17:59:48.331151 14567 layer_factory.hpp:77] Creating layer 355_bn
+I0601 17:59:48.331199 14567 net.cpp:84] Creating Layer 355_bn
+I0601 17:59:48.331218 14567 net.cpp:406] 355_bn <- 354
+I0601 17:59:48.331262 14567 net.cpp:380] 355_bn -> 355
+I0601 17:59:48.331514 14567 net.cpp:122] Setting up 355_bn
+I0601 17:59:48.331526 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.331531 14567 net.cpp:137] Memory required for data: 1789276400
+I0601 17:59:48.331555 14567 layer_factory.hpp:77] Creating layer 355
+I0601 17:59:48.331565 14567 net.cpp:84] Creating Layer 355
+I0601 17:59:48.331571 14567 net.cpp:406] 355 <- 355
+I0601 17:59:48.331579 14567 net.cpp:367] 355 -> 355 (in-place)
+I0601 17:59:48.331624 14567 layer_factory.hpp:77] Creating layer 355
+I0601 17:59:48.331748 14567 net.cpp:122] Setting up 355
+I0601 17:59:48.331758 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.331763 14567 net.cpp:137] Memory required for data: 1790279920
+I0601 17:59:48.331771 14567 layer_factory.hpp:77] Creating layer 356
+I0601 17:59:48.331779 14567 net.cpp:84] Creating Layer 356
+I0601 17:59:48.331784 14567 net.cpp:406] 356 <- 347_347_0_split_1
+I0601 17:59:48.331789 14567 net.cpp:406] 356 <- 355
+I0601 17:59:48.331797 14567 net.cpp:380] 356 -> 356
+I0601 17:59:48.331822 14567 net.cpp:122] Setting up 356
+I0601 17:59:48.331840 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.331846 14567 net.cpp:137] Memory required for data: 1791283440
+I0601 17:59:48.331853 14567 layer_factory.hpp:77] Creating layer 356_356_0_split
+I0601 17:59:48.331866 14567 net.cpp:84] Creating Layer 356_356_0_split
+I0601 17:59:48.331872 14567 net.cpp:406] 356_356_0_split <- 356
+I0601 17:59:48.331892 14567 net.cpp:380] 356_356_0_split -> 356_356_0_split_0
+I0601 17:59:48.331923 14567 net.cpp:380] 356_356_0_split -> 356_356_0_split_1
+I0601 17:59:48.331993 14567 net.cpp:122] Setting up 356_356_0_split
+I0601 17:59:48.332024 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.332046 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.332058 14567 net.cpp:137] Memory required for data: 1793290480
+I0601 17:59:48.332082 14567 layer_factory.hpp:77] Creating layer 357
+I0601 17:59:48.332123 14567 net.cpp:84] Creating Layer 357
+I0601 17:59:48.332134 14567 net.cpp:406] 357 <- 356_356_0_split_0
+I0601 17:59:48.332139 14567 net.cpp:380] 357 -> 357
+I0601 17:59:48.332356 14567 net.cpp:122] Setting up 357
+I0601 17:59:48.332368 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.332372 14567 net.cpp:137] Memory required for data: 1799311600
+I0601 17:59:48.332379 14567 layer_factory.hpp:77] Creating layer 358_bn
+I0601 17:59:48.332396 14567 net.cpp:84] Creating Layer 358_bn
+I0601 17:59:48.332403 14567 net.cpp:406] 358_bn <- 357
+I0601 17:59:48.332409 14567 net.cpp:380] 358_bn -> 358
+I0601 17:59:48.332623 14567 net.cpp:122] Setting up 358_bn
+I0601 17:59:48.332641 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.332648 14567 net.cpp:137] Memory required for data: 1805332720
+I0601 17:59:48.332661 14567 layer_factory.hpp:77] Creating layer 358
+I0601 17:59:48.332675 14567 net.cpp:84] Creating Layer 358
+I0601 17:59:48.332689 14567 net.cpp:406] 358 <- 358
+I0601 17:59:48.332710 14567 net.cpp:367] 358 -> 358 (in-place)
+I0601 17:59:48.332798 14567 layer_factory.hpp:77] Creating layer 358
+I0601 17:59:48.332974 14567 net.cpp:122] Setting up 358
+I0601 17:59:48.332985 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.332990 14567 net.cpp:137] Memory required for data: 1811353840
+I0601 17:59:48.332998 14567 layer_factory.hpp:77] Creating layer 359
+I0601 17:59:48.333004 14567 net.cpp:84] Creating Layer 359
+I0601 17:59:48.333009 14567 net.cpp:406] 359 <- 358
+I0601 17:59:48.333017 14567 net.cpp:380] 359 -> 359
+I0601 17:59:48.333039 14567 net.cpp:122] Setting up 359
+I0601 17:59:48.333048 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.333053 14567 net.cpp:137] Memory required for data: 1817374960
+I0601 17:59:48.333057 14567 layer_factory.hpp:77] Creating layer 360
+I0601 17:59:48.333063 14567 net.cpp:84] Creating Layer 360
+I0601 17:59:48.333073 14567 net.cpp:406] 360 <- 359
+I0601 17:59:48.333082 14567 net.cpp:380] 360 -> 360
+I0601 17:59:48.333348 14567 net.cpp:122] Setting up 360
+I0601 17:59:48.333359 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.333364 14567 net.cpp:137] Memory required for data: 1823396080
+I0601 17:59:48.333381 14567 layer_factory.hpp:77] Creating layer 361_bn
+I0601 17:59:48.333410 14567 net.cpp:84] Creating Layer 361_bn
+I0601 17:59:48.333422 14567 net.cpp:406] 361_bn <- 360
+I0601 17:59:48.333436 14567 net.cpp:380] 361_bn -> 361
+I0601 17:59:48.333741 14567 net.cpp:122] Setting up 361_bn
+I0601 17:59:48.333753 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.333757 14567 net.cpp:137] Memory required for data: 1829417200
+I0601 17:59:48.333767 14567 layer_factory.hpp:77] Creating layer 361
+I0601 17:59:48.333773 14567 net.cpp:84] Creating Layer 361
+I0601 17:59:48.333778 14567 net.cpp:406] 361 <- 361
+I0601 17:59:48.333786 14567 net.cpp:367] 361 -> 361 (in-place)
+I0601 17:59:48.333825 14567 layer_factory.hpp:77] Creating layer 361
+I0601 17:59:48.333962 14567 net.cpp:122] Setting up 361
+I0601 17:59:48.333976 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.333981 14567 net.cpp:137] Memory required for data: 1835438320
+I0601 17:59:48.333988 14567 layer_factory.hpp:77] Creating layer 362
+I0601 17:59:48.333995 14567 net.cpp:84] Creating Layer 362
+I0601 17:59:48.334000 14567 net.cpp:406] 362 <- 361
+I0601 17:59:48.334007 14567 net.cpp:380] 362 -> 362
+I0601 17:59:48.334031 14567 net.cpp:122] Setting up 362
+I0601 17:59:48.334040 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.334045 14567 net.cpp:137] Memory required for data: 1841459440
+I0601 17:59:48.334050 14567 layer_factory.hpp:77] Creating layer 363
+I0601 17:59:48.334072 14567 net.cpp:84] Creating Layer 363
+I0601 17:59:48.334079 14567 net.cpp:406] 363 <- 362
+I0601 17:59:48.334084 14567 net.cpp:380] 363 -> 363
+I0601 17:59:48.334321 14567 net.cpp:122] Setting up 363
+I0601 17:59:48.334352 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.334388 14567 net.cpp:137] Memory required for data: 1842462960
+I0601 17:59:48.334416 14567 layer_factory.hpp:77] Creating layer 364_bn
+I0601 17:59:48.334440 14567 net.cpp:84] Creating Layer 364_bn
+I0601 17:59:48.334460 14567 net.cpp:406] 364_bn <- 363
+I0601 17:59:48.334470 14567 net.cpp:380] 364_bn -> 364
+I0601 17:59:48.334699 14567 net.cpp:122] Setting up 364_bn
+I0601 17:59:48.334727 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.334730 14567 net.cpp:137] Memory required for data: 1843466480
+I0601 17:59:48.334739 14567 layer_factory.hpp:77] Creating layer 364
+I0601 17:59:48.334745 14567 net.cpp:84] Creating Layer 364
+I0601 17:59:48.334750 14567 net.cpp:406] 364 <- 364
+I0601 17:59:48.334759 14567 net.cpp:367] 364 -> 364 (in-place)
+I0601 17:59:48.334802 14567 layer_factory.hpp:77] Creating layer 364
+I0601 17:59:48.334923 14567 net.cpp:122] Setting up 364
+I0601 17:59:48.334933 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.334936 14567 net.cpp:137] Memory required for data: 1844470000
+I0601 17:59:48.334944 14567 layer_factory.hpp:77] Creating layer 365
+I0601 17:59:48.334951 14567 net.cpp:84] Creating Layer 365
+I0601 17:59:48.334956 14567 net.cpp:406] 365 <- 356_356_0_split_1
+I0601 17:59:48.334961 14567 net.cpp:406] 365 <- 364
+I0601 17:59:48.334970 14567 net.cpp:380] 365 -> 365
+I0601 17:59:48.334995 14567 net.cpp:122] Setting up 365
+I0601 17:59:48.335005 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.335009 14567 net.cpp:137] Memory required for data: 1845473520
+I0601 17:59:48.335013 14567 layer_factory.hpp:77] Creating layer 365_365_0_split
+I0601 17:59:48.335019 14567 net.cpp:84] Creating Layer 365_365_0_split
+I0601 17:59:48.335024 14567 net.cpp:406] 365_365_0_split <- 365
+I0601 17:59:48.335031 14567 net.cpp:380] 365_365_0_split -> 365_365_0_split_0
+I0601 17:59:48.335041 14567 net.cpp:380] 365_365_0_split -> 365_365_0_split_1
+I0601 17:59:48.335079 14567 net.cpp:122] Setting up 365_365_0_split
+I0601 17:59:48.335088 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.335094 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.335114 14567 net.cpp:137] Memory required for data: 1847480560
+I0601 17:59:48.335119 14567 layer_factory.hpp:77] Creating layer 366
+I0601 17:59:48.335142 14567 net.cpp:84] Creating Layer 366
+I0601 17:59:48.335151 14567 net.cpp:406] 366 <- 365_365_0_split_0
+I0601 17:59:48.335158 14567 net.cpp:380] 366 -> 366
+I0601 17:59:48.335363 14567 net.cpp:122] Setting up 366
+I0601 17:59:48.335374 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.335379 14567 net.cpp:137] Memory required for data: 1853501680
+I0601 17:59:48.335386 14567 layer_factory.hpp:77] Creating layer 367_bn
+I0601 17:59:48.335399 14567 net.cpp:84] Creating Layer 367_bn
+I0601 17:59:48.335408 14567 net.cpp:406] 367_bn <- 366
+I0601 17:59:48.335414 14567 net.cpp:380] 367_bn -> 367
+I0601 17:59:48.335623 14567 net.cpp:122] Setting up 367_bn
+I0601 17:59:48.335633 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.335638 14567 net.cpp:137] Memory required for data: 1859522800
+I0601 17:59:48.335647 14567 layer_factory.hpp:77] Creating layer 367
+I0601 17:59:48.335656 14567 net.cpp:84] Creating Layer 367
+I0601 17:59:48.335661 14567 net.cpp:406] 367 <- 367
+I0601 17:59:48.335667 14567 net.cpp:367] 367 -> 367 (in-place)
+I0601 17:59:48.335710 14567 layer_factory.hpp:77] Creating layer 367
+I0601 17:59:48.335826 14567 net.cpp:122] Setting up 367
+I0601 17:59:48.335837 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.335841 14567 net.cpp:137] Memory required for data: 1865543920
+I0601 17:59:48.335850 14567 layer_factory.hpp:77] Creating layer 368
+I0601 17:59:48.335855 14567 net.cpp:84] Creating Layer 368
+I0601 17:59:48.335860 14567 net.cpp:406] 368 <- 367
+I0601 17:59:48.335868 14567 net.cpp:380] 368 -> 368
+I0601 17:59:48.335893 14567 net.cpp:122] Setting up 368
+I0601 17:59:48.335902 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.335907 14567 net.cpp:137] Memory required for data: 1871565040
+I0601 17:59:48.335911 14567 layer_factory.hpp:77] Creating layer 369
+I0601 17:59:48.335927 14567 net.cpp:84] Creating Layer 369
+I0601 17:59:48.335932 14567 net.cpp:406] 369 <- 368
+I0601 17:59:48.335942 14567 net.cpp:380] 369 -> 369
+I0601 17:59:48.336174 14567 net.cpp:122] Setting up 369
+I0601 17:59:48.336185 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.336189 14567 net.cpp:137] Memory required for data: 1877586160
+I0601 17:59:48.336205 14567 layer_factory.hpp:77] Creating layer 370_bn
+I0601 17:59:48.336213 14567 net.cpp:84] Creating Layer 370_bn
+I0601 17:59:48.336218 14567 net.cpp:406] 370_bn <- 369
+I0601 17:59:48.336227 14567 net.cpp:380] 370_bn -> 370
+I0601 17:59:48.336439 14567 net.cpp:122] Setting up 370_bn
+I0601 17:59:48.336450 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.336454 14567 net.cpp:137] Memory required for data: 1883607280
+I0601 17:59:48.336463 14567 layer_factory.hpp:77] Creating layer 370
+I0601 17:59:48.336469 14567 net.cpp:84] Creating Layer 370
+I0601 17:59:48.336474 14567 net.cpp:406] 370 <- 370
+I0601 17:59:48.336480 14567 net.cpp:367] 370 -> 370 (in-place)
+I0601 17:59:48.336519 14567 layer_factory.hpp:77] Creating layer 370
+I0601 17:59:48.336657 14567 net.cpp:122] Setting up 370
+I0601 17:59:48.336668 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.336673 14567 net.cpp:137] Memory required for data: 1889628400
+I0601 17:59:48.336680 14567 layer_factory.hpp:77] Creating layer 371
+I0601 17:59:48.336688 14567 net.cpp:84] Creating Layer 371
+I0601 17:59:48.336694 14567 net.cpp:406] 371 <- 370
+I0601 17:59:48.336709 14567 net.cpp:380] 371 -> 371
+I0601 17:59:48.336742 14567 net.cpp:122] Setting up 371
+I0601 17:59:48.336768 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.336788 14567 net.cpp:137] Memory required for data: 1895649520
+I0601 17:59:48.336802 14567 layer_factory.hpp:77] Creating layer 372
+I0601 17:59:48.336833 14567 net.cpp:84] Creating Layer 372
+I0601 17:59:48.336843 14567 net.cpp:406] 372 <- 371
+I0601 17:59:48.336853 14567 net.cpp:380] 372 -> 372
+I0601 17:59:48.337126 14567 net.cpp:122] Setting up 372
+I0601 17:59:48.337157 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.337164 14567 net.cpp:137] Memory required for data: 1896653040
+I0601 17:59:48.337173 14567 layer_factory.hpp:77] Creating layer 373_bn
+I0601 17:59:48.337198 14567 net.cpp:84] Creating Layer 373_bn
+I0601 17:59:48.337208 14567 net.cpp:406] 373_bn <- 372
+I0601 17:59:48.337218 14567 net.cpp:380] 373_bn -> 373
+I0601 17:59:48.337494 14567 net.cpp:122] Setting up 373_bn
+I0601 17:59:48.337512 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.337518 14567 net.cpp:137] Memory required for data: 1897656560
+I0601 17:59:48.337534 14567 layer_factory.hpp:77] Creating layer 373
+I0601 17:59:48.337548 14567 net.cpp:84] Creating Layer 373
+I0601 17:59:48.337555 14567 net.cpp:406] 373 <- 373
+I0601 17:59:48.337568 14567 net.cpp:367] 373 -> 373 (in-place)
+I0601 17:59:48.337627 14567 layer_factory.hpp:77] Creating layer 373
+I0601 17:59:48.337797 14567 net.cpp:122] Setting up 373
+I0601 17:59:48.337815 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.337823 14567 net.cpp:137] Memory required for data: 1898660080
+I0601 17:59:48.337836 14567 layer_factory.hpp:77] Creating layer 374
+I0601 17:59:48.337849 14567 net.cpp:84] Creating Layer 374
+I0601 17:59:48.337857 14567 net.cpp:406] 374 <- 365_365_0_split_1
+I0601 17:59:48.337865 14567 net.cpp:406] 374 <- 373
+I0601 17:59:48.337877 14567 net.cpp:380] 374 -> 374
+I0601 17:59:48.337909 14567 net.cpp:122] Setting up 374
+I0601 17:59:48.337923 14567 net.cpp:129] Top shape: 20 64 14 14 (250880)
+I0601 17:59:48.337929 14567 net.cpp:137] Memory required for data: 1899663600
+I0601 17:59:48.337937 14567 layer_factory.hpp:77] Creating layer 375
+I0601 17:59:48.337963 14567 net.cpp:84] Creating Layer 375
+I0601 17:59:48.337975 14567 net.cpp:406] 375 <- 374
+I0601 17:59:48.337985 14567 net.cpp:380] 375 -> 375
+I0601 17:59:48.338240 14567 net.cpp:122] Setting up 375
+I0601 17:59:48.338256 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.338264 14567 net.cpp:137] Memory required for data: 1905684720
+I0601 17:59:48.338274 14567 layer_factory.hpp:77] Creating layer 376_bn
+I0601 17:59:48.338299 14567 net.cpp:84] Creating Layer 376_bn
+I0601 17:59:48.338310 14567 net.cpp:406] 376_bn <- 375
+I0601 17:59:48.338318 14567 net.cpp:380] 376_bn -> 376
+I0601 17:59:48.338791 14567 net.cpp:122] Setting up 376_bn
+I0601 17:59:48.338804 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.338809 14567 net.cpp:137] Memory required for data: 1911705840
+I0601 17:59:48.338825 14567 layer_factory.hpp:77] Creating layer 376
+I0601 17:59:48.338835 14567 net.cpp:84] Creating Layer 376
+I0601 17:59:48.338840 14567 net.cpp:406] 376 <- 376
+I0601 17:59:48.338846 14567 net.cpp:367] 376 -> 376 (in-place)
+I0601 17:59:48.338889 14567 layer_factory.hpp:77] Creating layer 376
+I0601 17:59:48.339011 14567 net.cpp:122] Setting up 376
+I0601 17:59:48.339022 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.339027 14567 net.cpp:137] Memory required for data: 1917726960
+I0601 17:59:48.339035 14567 layer_factory.hpp:77] Creating layer 377
+I0601 17:59:48.339041 14567 net.cpp:84] Creating Layer 377
+I0601 17:59:48.339046 14567 net.cpp:406] 377 <- 376
+I0601 17:59:48.339054 14567 net.cpp:380] 377 -> 377
+I0601 17:59:48.339084 14567 net.cpp:122] Setting up 377
+I0601 17:59:48.339094 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.339099 14567 net.cpp:137] Memory required for data: 1923748080
+I0601 17:59:48.339103 14567 layer_factory.hpp:77] Creating layer 378
+I0601 17:59:48.339123 14567 net.cpp:84] Creating Layer 378
+I0601 17:59:48.339130 14567 net.cpp:406] 378 <- 377
+I0601 17:59:48.339143 14567 net.cpp:380] 378 -> 378
+I0601 17:59:48.339480 14567 net.cpp:122] Setting up 378
+I0601 17:59:48.339493 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.339496 14567 net.cpp:137] Memory required for data: 1929769200
+I0601 17:59:48.339504 14567 layer_factory.hpp:77] Creating layer 379_bn
+I0601 17:59:48.339512 14567 net.cpp:84] Creating Layer 379_bn
+I0601 17:59:48.339530 14567 net.cpp:406] 379_bn <- 378
+I0601 17:59:48.339537 14567 net.cpp:380] 379_bn -> 379
+I0601 17:59:48.339762 14567 net.cpp:122] Setting up 379_bn
+I0601 17:59:48.339772 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.339777 14567 net.cpp:137] Memory required for data: 1935790320
+I0601 17:59:48.339793 14567 layer_factory.hpp:77] Creating layer 379
+I0601 17:59:48.339800 14567 net.cpp:84] Creating Layer 379
+I0601 17:59:48.339805 14567 net.cpp:406] 379 <- 379
+I0601 17:59:48.339812 14567 net.cpp:367] 379 -> 379 (in-place)
+I0601 17:59:48.339851 14567 layer_factory.hpp:77] Creating layer 379
+I0601 17:59:48.339985 14567 net.cpp:122] Setting up 379
+I0601 17:59:48.340015 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.340034 14567 net.cpp:137] Memory required for data: 1941811440
+I0601 17:59:48.340059 14567 layer_factory.hpp:77] Creating layer 380
+I0601 17:59:48.340116 14567 net.cpp:84] Creating Layer 380
+I0601 17:59:48.340131 14567 net.cpp:406] 380 <- 379
+I0601 17:59:48.340144 14567 net.cpp:380] 380 -> 380
+I0601 17:59:48.340196 14567 net.cpp:122] Setting up 380
+I0601 17:59:48.340211 14567 net.cpp:129] Top shape: 20 384 14 14 (1505280)
+I0601 17:59:48.340217 14567 net.cpp:137] Memory required for data: 1947832560
+I0601 17:59:48.340222 14567 layer_factory.hpp:77] Creating layer 381
+I0601 17:59:48.340232 14567 net.cpp:84] Creating Layer 381
+I0601 17:59:48.340237 14567 net.cpp:406] 381 <- 380
+I0601 17:59:48.340245 14567 net.cpp:380] 381 -> 381
+I0601 17:59:48.340458 14567 net.cpp:122] Setting up 381
+I0601 17:59:48.340468 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.340473 14567 net.cpp:137] Memory required for data: 1949337840
+I0601 17:59:48.340479 14567 layer_factory.hpp:77] Creating layer 382_bn
+I0601 17:59:48.340487 14567 net.cpp:84] Creating Layer 382_bn
+I0601 17:59:48.340492 14567 net.cpp:406] 382_bn <- 381
+I0601 17:59:48.340497 14567 net.cpp:380] 382_bn -> 382
+I0601 17:59:48.340728 14567 net.cpp:122] Setting up 382_bn
+I0601 17:59:48.340739 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.340744 14567 net.cpp:137] Memory required for data: 1950843120
+I0601 17:59:48.340754 14567 layer_factory.hpp:77] Creating layer 382
+I0601 17:59:48.340773 14567 net.cpp:84] Creating Layer 382
+I0601 17:59:48.340780 14567 net.cpp:406] 382 <- 382
+I0601 17:59:48.340787 14567 net.cpp:367] 382 -> 382 (in-place)
+I0601 17:59:48.340837 14567 layer_factory.hpp:77] Creating layer 382
+I0601 17:59:48.341014 14567 net.cpp:122] Setting up 382
+I0601 17:59:48.341029 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.341037 14567 net.cpp:137] Memory required for data: 1952348400
+I0601 17:59:48.341048 14567 layer_factory.hpp:77] Creating layer 382_382_0_split
+I0601 17:59:48.341060 14567 net.cpp:84] Creating Layer 382_382_0_split
+I0601 17:59:48.341073 14567 net.cpp:406] 382_382_0_split <- 382
+I0601 17:59:48.341084 14567 net.cpp:380] 382_382_0_split -> 382_382_0_split_0
+I0601 17:59:48.341094 14567 net.cpp:380] 382_382_0_split -> 382_382_0_split_1
+I0601 17:59:48.341159 14567 net.cpp:122] Setting up 382_382_0_split
+I0601 17:59:48.341177 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.341199 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.341212 14567 net.cpp:137] Memory required for data: 1955358960
+I0601 17:59:48.341224 14567 layer_factory.hpp:77] Creating layer 383
+I0601 17:59:48.341239 14567 net.cpp:84] Creating Layer 383
+I0601 17:59:48.341246 14567 net.cpp:406] 383 <- 382_382_0_split_0
+I0601 17:59:48.341259 14567 net.cpp:380] 383 -> 383
+I0601 17:59:48.341500 14567 net.cpp:122] Setting up 383
+I0601 17:59:48.341511 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.341514 14567 net.cpp:137] Memory required for data: 1964390640
+I0601 17:59:48.341521 14567 layer_factory.hpp:77] Creating layer 384_bn
+I0601 17:59:48.341527 14567 net.cpp:84] Creating Layer 384_bn
+I0601 17:59:48.341532 14567 net.cpp:406] 384_bn <- 383
+I0601 17:59:48.341539 14567 net.cpp:380] 384_bn -> 384
+I0601 17:59:48.341776 14567 net.cpp:122] Setting up 384_bn
+I0601 17:59:48.341835 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.341871 14567 net.cpp:137] Memory required for data: 1973422320
+I0601 17:59:48.341897 14567 layer_factory.hpp:77] Creating layer 384
+I0601 17:59:48.341938 14567 net.cpp:84] Creating Layer 384
+I0601 17:59:48.341954 14567 net.cpp:406] 384 <- 384
+I0601 17:59:48.341964 14567 net.cpp:367] 384 -> 384 (in-place)
+I0601 17:59:48.342021 14567 layer_factory.hpp:77] Creating layer 384
+I0601 17:59:48.342165 14567 net.cpp:122] Setting up 384
+I0601 17:59:48.342177 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.342181 14567 net.cpp:137] Memory required for data: 1982454000
+I0601 17:59:48.342196 14567 layer_factory.hpp:77] Creating layer 385
+I0601 17:59:48.342206 14567 net.cpp:84] Creating Layer 385
+I0601 17:59:48.342211 14567 net.cpp:406] 385 <- 384
+I0601 17:59:48.342218 14567 net.cpp:380] 385 -> 385
+I0601 17:59:48.342247 14567 net.cpp:122] Setting up 385
+I0601 17:59:48.342258 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.342262 14567 net.cpp:137] Memory required for data: 1991485680
+I0601 17:59:48.342267 14567 layer_factory.hpp:77] Creating layer 386
+I0601 17:59:48.342278 14567 net.cpp:84] Creating Layer 386
+I0601 17:59:48.342283 14567 net.cpp:406] 386 <- 385
+I0601 17:59:48.342288 14567 net.cpp:380] 386 -> 386
+I0601 17:59:48.342691 14567 net.cpp:122] Setting up 386
+I0601 17:59:48.342705 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.342710 14567 net.cpp:137] Memory required for data: 2000517360
+I0601 17:59:48.342718 14567 layer_factory.hpp:77] Creating layer 387_bn
+I0601 17:59:48.342727 14567 net.cpp:84] Creating Layer 387_bn
+I0601 17:59:48.342733 14567 net.cpp:406] 387_bn <- 386
+I0601 17:59:48.342742 14567 net.cpp:380] 387_bn -> 387
+I0601 17:59:48.342968 14567 net.cpp:122] Setting up 387_bn
+I0601 17:59:48.342980 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.342984 14567 net.cpp:137] Memory required for data: 2009549040
+I0601 17:59:48.342994 14567 layer_factory.hpp:77] Creating layer 387
+I0601 17:59:48.343008 14567 net.cpp:84] Creating Layer 387
+I0601 17:59:48.343014 14567 net.cpp:406] 387 <- 387
+I0601 17:59:48.343022 14567 net.cpp:367] 387 -> 387 (in-place)
+I0601 17:59:48.343080 14567 layer_factory.hpp:77] Creating layer 387
+I0601 17:59:48.343235 14567 net.cpp:122] Setting up 387
+I0601 17:59:48.343266 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.343294 14567 net.cpp:137] Memory required for data: 2018580720
+I0601 17:59:48.343340 14567 layer_factory.hpp:77] Creating layer 388
+I0601 17:59:48.343369 14567 net.cpp:84] Creating Layer 388
+I0601 17:59:48.343389 14567 net.cpp:406] 388 <- 387
+I0601 17:59:48.343399 14567 net.cpp:380] 388 -> 388
+I0601 17:59:48.343470 14567 net.cpp:122] Setting up 388
+I0601 17:59:48.343482 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.343485 14567 net.cpp:137] Memory required for data: 2027612400
+I0601 17:59:48.343490 14567 layer_factory.hpp:77] Creating layer 389
+I0601 17:59:48.343499 14567 net.cpp:84] Creating Layer 389
+I0601 17:59:48.343505 14567 net.cpp:406] 389 <- 388
+I0601 17:59:48.343511 14567 net.cpp:380] 389 -> 389
+I0601 17:59:48.343760 14567 net.cpp:122] Setting up 389
+I0601 17:59:48.343798 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.343818 14567 net.cpp:137] Memory required for data: 2029117680
+I0601 17:59:48.343832 14567 layer_factory.hpp:77] Creating layer 390_bn
+I0601 17:59:48.343863 14567 net.cpp:84] Creating Layer 390_bn
+I0601 17:59:48.343888 14567 net.cpp:406] 390_bn <- 389
+I0601 17:59:48.343901 14567 net.cpp:380] 390_bn -> 390
+I0601 17:59:48.344164 14567 net.cpp:122] Setting up 390_bn
+I0601 17:59:48.344177 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.344180 14567 net.cpp:137] Memory required for data: 2030622960
+I0601 17:59:48.344189 14567 layer_factory.hpp:77] Creating layer 390
+I0601 17:59:48.344207 14567 net.cpp:84] Creating Layer 390
+I0601 17:59:48.344231 14567 net.cpp:406] 390 <- 390
+I0601 17:59:48.344238 14567 net.cpp:367] 390 -> 390 (in-place)
+I0601 17:59:48.344302 14567 layer_factory.hpp:77] Creating layer 390
+I0601 17:59:48.344440 14567 net.cpp:122] Setting up 390
+I0601 17:59:48.344451 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.344455 14567 net.cpp:137] Memory required for data: 2032128240
+I0601 17:59:48.344463 14567 layer_factory.hpp:77] Creating layer 391
+I0601 17:59:48.344470 14567 net.cpp:84] Creating Layer 391
+I0601 17:59:48.344475 14567 net.cpp:406] 391 <- 382_382_0_split_1
+I0601 17:59:48.344480 14567 net.cpp:406] 391 <- 390
+I0601 17:59:48.344492 14567 net.cpp:380] 391 -> 391
+I0601 17:59:48.344532 14567 net.cpp:122] Setting up 391
+I0601 17:59:48.344555 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.344568 14567 net.cpp:137] Memory required for data: 2033633520
+I0601 17:59:48.344605 14567 layer_factory.hpp:77] Creating layer 391_391_0_split
+I0601 17:59:48.344638 14567 net.cpp:84] Creating Layer 391_391_0_split
+I0601 17:59:48.344667 14567 net.cpp:406] 391_391_0_split <- 391
+I0601 17:59:48.344683 14567 net.cpp:380] 391_391_0_split -> 391_391_0_split_0
+I0601 17:59:48.344707 14567 net.cpp:380] 391_391_0_split -> 391_391_0_split_1
+I0601 17:59:48.344785 14567 net.cpp:122] Setting up 391_391_0_split
+I0601 17:59:48.344795 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.344801 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.344805 14567 net.cpp:137] Memory required for data: 2036644080
+I0601 17:59:48.344810 14567 layer_factory.hpp:77] Creating layer 392
+I0601 17:59:48.344817 14567 net.cpp:84] Creating Layer 392
+I0601 17:59:48.344822 14567 net.cpp:406] 392 <- 391_391_0_split_0
+I0601 17:59:48.344828 14567 net.cpp:380] 392 -> 392
+I0601 17:59:48.345078 14567 net.cpp:122] Setting up 392
+I0601 17:59:48.345089 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.345093 14567 net.cpp:137] Memory required for data: 2045675760
+I0601 17:59:48.345100 14567 layer_factory.hpp:77] Creating layer 393_bn
+I0601 17:59:48.345119 14567 net.cpp:84] Creating Layer 393_bn
+I0601 17:59:48.345129 14567 net.cpp:406] 393_bn <- 392
+I0601 17:59:48.345136 14567 net.cpp:380] 393_bn -> 393
+I0601 17:59:48.345428 14567 net.cpp:122] Setting up 393_bn
+I0601 17:59:48.345466 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.345486 14567 net.cpp:137] Memory required for data: 2054707440
+I0601 17:59:48.345515 14567 layer_factory.hpp:77] Creating layer 393
+I0601 17:59:48.345527 14567 net.cpp:84] Creating Layer 393
+I0601 17:59:48.345535 14567 net.cpp:406] 393 <- 393
+I0601 17:59:48.345548 14567 net.cpp:367] 393 -> 393 (in-place)
+I0601 17:59:48.345607 14567 layer_factory.hpp:77] Creating layer 393
+I0601 17:59:48.345875 14567 net.cpp:122] Setting up 393
+I0601 17:59:48.345888 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.345893 14567 net.cpp:137] Memory required for data: 2063739120
+I0601 17:59:48.345911 14567 layer_factory.hpp:77] Creating layer 394
+I0601 17:59:48.345921 14567 net.cpp:84] Creating Layer 394
+I0601 17:59:48.345926 14567 net.cpp:406] 394 <- 393
+I0601 17:59:48.345934 14567 net.cpp:380] 394 -> 394
+I0601 17:59:48.345978 14567 net.cpp:122] Setting up 394
+I0601 17:59:48.345988 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.345993 14567 net.cpp:137] Memory required for data: 2072770800
+I0601 17:59:48.345998 14567 layer_factory.hpp:77] Creating layer 395
+I0601 17:59:48.346004 14567 net.cpp:84] Creating Layer 395
+I0601 17:59:48.346009 14567 net.cpp:406] 395 <- 394
+I0601 17:59:48.346019 14567 net.cpp:380] 395 -> 395
+I0601 17:59:48.346312 14567 net.cpp:122] Setting up 395
+I0601 17:59:48.346325 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.346330 14567 net.cpp:137] Memory required for data: 2081802480
+I0601 17:59:48.346338 14567 layer_factory.hpp:77] Creating layer 396_bn
+I0601 17:59:48.346355 14567 net.cpp:84] Creating Layer 396_bn
+I0601 17:59:48.346364 14567 net.cpp:406] 396_bn <- 395
+I0601 17:59:48.346370 14567 net.cpp:380] 396_bn -> 396
+I0601 17:59:48.346619 14567 net.cpp:122] Setting up 396_bn
+I0601 17:59:48.346674 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.346761 14567 net.cpp:137] Memory required for data: 2090834160
+I0601 17:59:48.346796 14567 layer_factory.hpp:77] Creating layer 396
+I0601 17:59:48.346813 14567 net.cpp:84] Creating Layer 396
+I0601 17:59:48.346833 14567 net.cpp:406] 396 <- 396
+I0601 17:59:48.346848 14567 net.cpp:367] 396 -> 396 (in-place)
+I0601 17:59:48.346909 14567 layer_factory.hpp:77] Creating layer 396
+I0601 17:59:48.347041 14567 net.cpp:122] Setting up 396
+I0601 17:59:48.347052 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.347056 14567 net.cpp:137] Memory required for data: 2099865840
+I0601 17:59:48.347071 14567 layer_factory.hpp:77] Creating layer 397
+I0601 17:59:48.347088 14567 net.cpp:84] Creating Layer 397
+I0601 17:59:48.347097 14567 net.cpp:406] 397 <- 396
+I0601 17:59:48.347106 14567 net.cpp:380] 397 -> 397
+I0601 17:59:48.347136 14567 net.cpp:122] Setting up 397
+I0601 17:59:48.347146 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.347151 14567 net.cpp:137] Memory required for data: 2108897520
+I0601 17:59:48.347157 14567 layer_factory.hpp:77] Creating layer 398
+I0601 17:59:48.347163 14567 net.cpp:84] Creating Layer 398
+I0601 17:59:48.347168 14567 net.cpp:406] 398 <- 397
+I0601 17:59:48.347177 14567 net.cpp:380] 398 -> 398
+I0601 17:59:48.347479 14567 net.cpp:122] Setting up 398
+I0601 17:59:48.347503 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.347522 14567 net.cpp:137] Memory required for data: 2110402800
+I0601 17:59:48.347538 14567 layer_factory.hpp:77] Creating layer 399_bn
+I0601 17:59:48.347568 14567 net.cpp:84] Creating Layer 399_bn
+I0601 17:59:48.347579 14567 net.cpp:406] 399_bn <- 398
+I0601 17:59:48.347589 14567 net.cpp:380] 399_bn -> 399
+I0601 17:59:48.347813 14567 net.cpp:122] Setting up 399_bn
+I0601 17:59:48.347834 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.347842 14567 net.cpp:137] Memory required for data: 2111908080
+I0601 17:59:48.347856 14567 layer_factory.hpp:77] Creating layer 399
+I0601 17:59:48.347878 14567 net.cpp:84] Creating Layer 399
+I0601 17:59:48.347883 14567 net.cpp:406] 399 <- 399
+I0601 17:59:48.347890 14567 net.cpp:367] 399 -> 399 (in-place)
+I0601 17:59:48.347937 14567 layer_factory.hpp:77] Creating layer 399
+I0601 17:59:48.348063 14567 net.cpp:122] Setting up 399
+I0601 17:59:48.348083 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.348089 14567 net.cpp:137] Memory required for data: 2113413360
+I0601 17:59:48.348101 14567 layer_factory.hpp:77] Creating layer 400
+I0601 17:59:48.348122 14567 net.cpp:84] Creating Layer 400
+I0601 17:59:48.348134 14567 net.cpp:406] 400 <- 391_391_0_split_1
+I0601 17:59:48.348143 14567 net.cpp:406] 400 <- 399
+I0601 17:59:48.348153 14567 net.cpp:380] 400 -> 400
+I0601 17:59:48.348191 14567 net.cpp:122] Setting up 400
+I0601 17:59:48.348202 14567 net.cpp:129] Top shape: 20 96 14 14 (376320)
+I0601 17:59:48.348209 14567 net.cpp:137] Memory required for data: 2114918640
+I0601 17:59:48.348232 14567 layer_factory.hpp:77] Creating layer 401
+I0601 17:59:48.348248 14567 net.cpp:84] Creating Layer 401
+I0601 17:59:48.348258 14567 net.cpp:406] 401 <- 400
+I0601 17:59:48.348269 14567 net.cpp:380] 401 -> 401
+I0601 17:59:48.348601 14567 net.cpp:122] Setting up 401
+I0601 17:59:48.348616 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.348623 14567 net.cpp:137] Memory required for data: 2123950320
+I0601 17:59:48.348634 14567 layer_factory.hpp:77] Creating layer 402_bn
+I0601 17:59:48.348655 14567 net.cpp:84] Creating Layer 402_bn
+I0601 17:59:48.348666 14567 net.cpp:406] 402_bn <- 401
+I0601 17:59:48.348677 14567 net.cpp:380] 402_bn -> 402
+I0601 17:59:48.348912 14567 net.cpp:122] Setting up 402_bn
+I0601 17:59:48.348932 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.348948 14567 net.cpp:137] Memory required for data: 2132982000
+I0601 17:59:48.349004 14567 layer_factory.hpp:77] Creating layer 402
+I0601 17:59:48.349018 14567 net.cpp:84] Creating Layer 402
+I0601 17:59:48.349026 14567 net.cpp:406] 402 <- 402
+I0601 17:59:48.349053 14567 net.cpp:367] 402 -> 402 (in-place)
+I0601 17:59:48.349117 14567 layer_factory.hpp:77] Creating layer 402
+I0601 17:59:48.349261 14567 net.cpp:122] Setting up 402
+I0601 17:59:48.349274 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.349282 14567 net.cpp:137] Memory required for data: 2142013680
+I0601 17:59:48.349294 14567 layer_factory.hpp:77] Creating layer 403
+I0601 17:59:48.349304 14567 net.cpp:84] Creating Layer 403
+I0601 17:59:48.349313 14567 net.cpp:406] 403 <- 402
+I0601 17:59:48.349325 14567 net.cpp:380] 403 -> 403
+I0601 17:59:48.349364 14567 net.cpp:122] Setting up 403
+I0601 17:59:48.349377 14567 net.cpp:129] Top shape: 20 576 14 14 (2257920)
+I0601 17:59:48.349385 14567 net.cpp:137] Memory required for data: 2151045360
+I0601 17:59:48.349412 14567 layer_factory.hpp:77] Creating layer 404
+I0601 17:59:48.349434 14567 net.cpp:84] Creating Layer 404
+I0601 17:59:48.349444 14567 net.cpp:406] 404 <- 403
+I0601 17:59:48.349457 14567 net.cpp:380] 404 -> 404
+I0601 17:59:48.349961 14567 net.cpp:122] Setting up 404
+I0601 17:59:48.349977 14567 net.cpp:129] Top shape: 20 576 7 7 (564480)
+I0601 17:59:48.349983 14567 net.cpp:137] Memory required for data: 2153303280
+I0601 17:59:48.349997 14567 layer_factory.hpp:77] Creating layer 405_bn
+I0601 17:59:48.350010 14567 net.cpp:84] Creating Layer 405_bn
+I0601 17:59:48.350018 14567 net.cpp:406] 405_bn <- 404
+I0601 17:59:48.350031 14567 net.cpp:380] 405_bn -> 405
+I0601 17:59:48.350298 14567 net.cpp:122] Setting up 405_bn
+I0601 17:59:48.350314 14567 net.cpp:129] Top shape: 20 576 7 7 (564480)
+I0601 17:59:48.350322 14567 net.cpp:137] Memory required for data: 2155561200
+I0601 17:59:48.350337 14567 layer_factory.hpp:77] Creating layer 405
+I0601 17:59:48.350350 14567 net.cpp:84] Creating Layer 405
+I0601 17:59:48.350360 14567 net.cpp:406] 405 <- 405
+I0601 17:59:48.350370 14567 net.cpp:367] 405 -> 405 (in-place)
+I0601 17:59:48.350430 14567 layer_factory.hpp:77] Creating layer 405
+I0601 17:59:48.350564 14567 net.cpp:122] Setting up 405
+I0601 17:59:48.350577 14567 net.cpp:129] Top shape: 20 576 7 7 (564480)
+I0601 17:59:48.350585 14567 net.cpp:137] Memory required for data: 2157819120
+I0601 17:59:48.350597 14567 layer_factory.hpp:77] Creating layer 406
+I0601 17:59:48.350610 14567 net.cpp:84] Creating Layer 406
+I0601 17:59:48.350618 14567 net.cpp:406] 406 <- 405
+I0601 17:59:48.350627 14567 net.cpp:380] 406 -> 406
+I0601 17:59:48.350666 14567 net.cpp:122] Setting up 406
+I0601 17:59:48.350677 14567 net.cpp:129] Top shape: 20 576 7 7 (564480)
+I0601 17:59:48.350684 14567 net.cpp:137] Memory required for data: 2160077040
+I0601 17:59:48.350692 14567 layer_factory.hpp:77] Creating layer 407
+I0601 17:59:48.350716 14567 net.cpp:84] Creating Layer 407
+I0601 17:59:48.350725 14567 net.cpp:406] 407 <- 406
+I0601 17:59:48.350736 14567 net.cpp:380] 407 -> 407
+I0601 17:59:48.355705 14567 net.cpp:122] Setting up 407
+I0601 17:59:48.355726 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.355734 14567 net.cpp:137] Memory required for data: 2160704240
+I0601 17:59:48.355757 14567 layer_factory.hpp:77] Creating layer 408_bn
+I0601 17:59:48.355773 14567 net.cpp:84] Creating Layer 408_bn
+I0601 17:59:48.355787 14567 net.cpp:406] 408_bn <- 407
+I0601 17:59:48.355798 14567 net.cpp:380] 408_bn -> 408
+I0601 17:59:48.356052 14567 net.cpp:122] Setting up 408_bn
+I0601 17:59:48.356073 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.356081 14567 net.cpp:137] Memory required for data: 2161331440
+I0601 17:59:48.356112 14567 layer_factory.hpp:77] Creating layer 408
+I0601 17:59:48.356123 14567 net.cpp:84] Creating Layer 408
+I0601 17:59:48.356132 14567 net.cpp:406] 408 <- 408
+I0601 17:59:48.356144 14567 net.cpp:367] 408 -> 408 (in-place)
+I0601 17:59:48.356199 14567 layer_factory.hpp:77] Creating layer 408
+I0601 17:59:48.356344 14567 net.cpp:122] Setting up 408
+I0601 17:59:48.356357 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.356365 14567 net.cpp:137] Memory required for data: 2161958640
+I0601 17:59:48.356377 14567 layer_factory.hpp:77] Creating layer 408_408_0_split
+I0601 17:59:48.356421 14567 net.cpp:84] Creating Layer 408_408_0_split
+I0601 17:59:48.356431 14567 net.cpp:406] 408_408_0_split <- 408
+I0601 17:59:48.356444 14567 net.cpp:380] 408_408_0_split -> 408_408_0_split_0
+I0601 17:59:48.356457 14567 net.cpp:380] 408_408_0_split -> 408_408_0_split_1
+I0601 17:59:48.356510 14567 net.cpp:122] Setting up 408_408_0_split
+I0601 17:59:48.356523 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.356532 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.356539 14567 net.cpp:137] Memory required for data: 2163213040
+I0601 17:59:48.356546 14567 layer_factory.hpp:77] Creating layer 409
+I0601 17:59:48.356557 14567 net.cpp:84] Creating Layer 409
+I0601 17:59:48.356565 14567 net.cpp:406] 409 <- 408_408_0_split_0
+I0601 17:59:48.356575 14567 net.cpp:380] 409 -> 409
+I0601 17:59:48.356916 14567 net.cpp:122] Setting up 409
+I0601 17:59:48.356930 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.356936 14567 net.cpp:137] Memory required for data: 2166976240
+I0601 17:59:48.356957 14567 layer_factory.hpp:77] Creating layer 410_bn
+I0601 17:59:48.356977 14567 net.cpp:84] Creating Layer 410_bn
+I0601 17:59:48.356988 14567 net.cpp:406] 410_bn <- 409
+I0601 17:59:48.357002 14567 net.cpp:380] 410_bn -> 410
+I0601 17:59:48.357246 14567 net.cpp:122] Setting up 410_bn
+I0601 17:59:48.357261 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.357269 14567 net.cpp:137] Memory required for data: 2170739440
+I0601 17:59:48.357283 14567 layer_factory.hpp:77] Creating layer 410
+I0601 17:59:48.357293 14567 net.cpp:84] Creating Layer 410
+I0601 17:59:48.357302 14567 net.cpp:406] 410 <- 410
+I0601 17:59:48.357312 14567 net.cpp:367] 410 -> 410 (in-place)
+I0601 17:59:48.357372 14567 layer_factory.hpp:77] Creating layer 410
+I0601 17:59:48.357511 14567 net.cpp:122] Setting up 410
+I0601 17:59:48.357524 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.357532 14567 net.cpp:137] Memory required for data: 2174502640
+I0601 17:59:48.357543 14567 layer_factory.hpp:77] Creating layer 411
+I0601 17:59:48.357554 14567 net.cpp:84] Creating Layer 411
+I0601 17:59:48.357561 14567 net.cpp:406] 411 <- 410
+I0601 17:59:48.357571 14567 net.cpp:380] 411 -> 411
+I0601 17:59:48.357606 14567 net.cpp:122] Setting up 411
+I0601 17:59:48.357617 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.357625 14567 net.cpp:137] Memory required for data: 2178265840
+I0601 17:59:48.357632 14567 layer_factory.hpp:77] Creating layer 412
+I0601 17:59:48.357672 14567 net.cpp:84] Creating Layer 412
+I0601 17:59:48.357682 14567 net.cpp:406] 412 <- 411
+I0601 17:59:48.357692 14567 net.cpp:380] 412 -> 412
+I0601 17:59:48.357978 14567 net.cpp:122] Setting up 412
+I0601 17:59:48.357992 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.358000 14567 net.cpp:137] Memory required for data: 2182029040
+I0601 17:59:48.358011 14567 layer_factory.hpp:77] Creating layer 413_bn
+I0601 17:59:48.358034 14567 net.cpp:84] Creating Layer 413_bn
+I0601 17:59:48.358047 14567 net.cpp:406] 413_bn <- 412
+I0601 17:59:48.358057 14567 net.cpp:380] 413_bn -> 413
+I0601 17:59:48.358306 14567 net.cpp:122] Setting up 413_bn
+I0601 17:59:48.358321 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.358330 14567 net.cpp:137] Memory required for data: 2185792240
+I0601 17:59:48.358345 14567 layer_factory.hpp:77] Creating layer 413
+I0601 17:59:48.358355 14567 net.cpp:84] Creating Layer 413
+I0601 17:59:48.358362 14567 net.cpp:406] 413 <- 413
+I0601 17:59:48.358372 14567 net.cpp:367] 413 -> 413 (in-place)
+I0601 17:59:48.358430 14567 layer_factory.hpp:77] Creating layer 413
+I0601 17:59:48.358587 14567 net.cpp:122] Setting up 413
+I0601 17:59:48.358598 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.358605 14567 net.cpp:137] Memory required for data: 2189555440
+I0601 17:59:48.358618 14567 layer_factory.hpp:77] Creating layer 414
+I0601 17:59:48.358626 14567 net.cpp:84] Creating Layer 414
+I0601 17:59:48.358633 14567 net.cpp:406] 414 <- 413
+I0601 17:59:48.358645 14567 net.cpp:380] 414 -> 414
+I0601 17:59:48.358708 14567 net.cpp:122] Setting up 414
+I0601 17:59:48.358724 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.358732 14567 net.cpp:137] Memory required for data: 2193318640
+I0601 17:59:48.358739 14567 layer_factory.hpp:77] Creating layer 415
+I0601 17:59:48.358760 14567 net.cpp:84] Creating Layer 415
+I0601 17:59:48.358770 14567 net.cpp:406] 415 <- 414
+I0601 17:59:48.358783 14567 net.cpp:380] 415 -> 415
+I0601 17:59:48.359109 14567 net.cpp:122] Setting up 415
+I0601 17:59:48.359124 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.359131 14567 net.cpp:137] Memory required for data: 2193945840
+I0601 17:59:48.359141 14567 layer_factory.hpp:77] Creating layer 416_bn
+I0601 17:59:48.359154 14567 net.cpp:84] Creating Layer 416_bn
+I0601 17:59:48.359163 14567 net.cpp:406] 416_bn <- 415
+I0601 17:59:48.359174 14567 net.cpp:380] 416_bn -> 416
+I0601 17:59:48.359395 14567 net.cpp:122] Setting up 416_bn
+I0601 17:59:48.359408 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.359416 14567 net.cpp:137] Memory required for data: 2194573040
+I0601 17:59:48.359439 14567 layer_factory.hpp:77] Creating layer 416
+I0601 17:59:48.359453 14567 net.cpp:84] Creating Layer 416
+I0601 17:59:48.359462 14567 net.cpp:406] 416 <- 416
+I0601 17:59:48.359472 14567 net.cpp:367] 416 -> 416 (in-place)
+I0601 17:59:48.359530 14567 layer_factory.hpp:77] Creating layer 416
+I0601 17:59:48.359668 14567 net.cpp:122] Setting up 416
+I0601 17:59:48.359683 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.359689 14567 net.cpp:137] Memory required for data: 2195200240
+I0601 17:59:48.359702 14567 layer_factory.hpp:77] Creating layer 417
+I0601 17:59:48.359724 14567 net.cpp:84] Creating Layer 417
+I0601 17:59:48.359733 14567 net.cpp:406] 417 <- 408_408_0_split_1
+I0601 17:59:48.359743 14567 net.cpp:406] 417 <- 416
+I0601 17:59:48.359753 14567 net.cpp:380] 417 -> 417
+I0601 17:59:48.359791 14567 net.cpp:122] Setting up 417
+I0601 17:59:48.359802 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.359809 14567 net.cpp:137] Memory required for data: 2195827440
+I0601 17:59:48.359817 14567 layer_factory.hpp:77] Creating layer 417_417_0_split
+I0601 17:59:48.359827 14567 net.cpp:84] Creating Layer 417_417_0_split
+I0601 17:59:48.359834 14567 net.cpp:406] 417_417_0_split <- 417
+I0601 17:59:48.359848 14567 net.cpp:380] 417_417_0_split -> 417_417_0_split_0
+I0601 17:59:48.359859 14567 net.cpp:380] 417_417_0_split -> 417_417_0_split_1
+I0601 17:59:48.359906 14567 net.cpp:122] Setting up 417_417_0_split
+I0601 17:59:48.359921 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.359932 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.359939 14567 net.cpp:137] Memory required for data: 2197081840
+I0601 17:59:48.359946 14567 layer_factory.hpp:77] Creating layer 418
+I0601 17:59:48.359957 14567 net.cpp:84] Creating Layer 418
+I0601 17:59:48.359966 14567 net.cpp:406] 418 <- 417_417_0_split_0
+I0601 17:59:48.359975 14567 net.cpp:380] 418 -> 418
+I0601 17:59:48.367955 14567 net.cpp:122] Setting up 418
+I0601 17:59:48.367975 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.367982 14567 net.cpp:137] Memory required for data: 2200845040
+I0601 17:59:48.368005 14567 layer_factory.hpp:77] Creating layer 419_bn
+I0601 17:59:48.368033 14567 net.cpp:84] Creating Layer 419_bn
+I0601 17:59:48.368042 14567 net.cpp:406] 419_bn <- 418
+I0601 17:59:48.368052 14567 net.cpp:380] 419_bn -> 419
+I0601 17:59:48.368338 14567 net.cpp:122] Setting up 419_bn
+I0601 17:59:48.368353 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.368361 14567 net.cpp:137] Memory required for data: 2204608240
+I0601 17:59:48.368377 14567 layer_factory.hpp:77] Creating layer 419
+I0601 17:59:48.368423 14567 net.cpp:84] Creating Layer 419
+I0601 17:59:48.368432 14567 net.cpp:406] 419 <- 419
+I0601 17:59:48.368445 14567 net.cpp:367] 419 -> 419 (in-place)
+I0601 17:59:48.368502 14567 layer_factory.hpp:77] Creating layer 419
+I0601 17:59:48.368672 14567 net.cpp:122] Setting up 419
+I0601 17:59:48.368685 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.368706 14567 net.cpp:137] Memory required for data: 2208371440
+I0601 17:59:48.368721 14567 layer_factory.hpp:77] Creating layer 420
+I0601 17:59:48.368731 14567 net.cpp:84] Creating Layer 420
+I0601 17:59:48.368739 14567 net.cpp:406] 420 <- 419
+I0601 17:59:48.368752 14567 net.cpp:380] 420 -> 420
+I0601 17:59:48.368788 14567 net.cpp:122] Setting up 420
+I0601 17:59:48.368803 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.368809 14567 net.cpp:137] Memory required for data: 2212134640
+I0601 17:59:48.368815 14567 layer_factory.hpp:77] Creating layer 421
+I0601 17:59:48.368826 14567 net.cpp:84] Creating Layer 421
+I0601 17:59:48.368834 14567 net.cpp:406] 421 <- 420
+I0601 17:59:48.368842 14567 net.cpp:380] 421 -> 421
+I0601 17:59:48.369118 14567 net.cpp:122] Setting up 421
+I0601 17:59:48.369135 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.369143 14567 net.cpp:137] Memory required for data: 2215897840
+I0601 17:59:48.369154 14567 layer_factory.hpp:77] Creating layer 422_bn
+I0601 17:59:48.369164 14567 net.cpp:84] Creating Layer 422_bn
+I0601 17:59:48.369173 14567 net.cpp:406] 422_bn <- 421
+I0601 17:59:48.369182 14567 net.cpp:380] 422_bn -> 422
+I0601 17:59:48.369408 14567 net.cpp:122] Setting up 422_bn
+I0601 17:59:48.369423 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.369431 14567 net.cpp:137] Memory required for data: 2219661040
+I0601 17:59:48.369455 14567 layer_factory.hpp:77] Creating layer 422
+I0601 17:59:48.369494 14567 net.cpp:84] Creating Layer 422
+I0601 17:59:48.369505 14567 net.cpp:406] 422 <- 422
+I0601 17:59:48.369518 14567 net.cpp:367] 422 -> 422 (in-place)
+I0601 17:59:48.369572 14567 layer_factory.hpp:77] Creating layer 422
+I0601 17:59:48.369701 14567 net.cpp:122] Setting up 422
+I0601 17:59:48.369730 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.369737 14567 net.cpp:137] Memory required for data: 2223424240
+I0601 17:59:48.369750 14567 layer_factory.hpp:77] Creating layer 423
+I0601 17:59:48.369758 14567 net.cpp:84] Creating Layer 423
+I0601 17:59:48.369772 14567 net.cpp:406] 423 <- 422
+I0601 17:59:48.369782 14567 net.cpp:380] 423 -> 423
+I0601 17:59:48.369813 14567 net.cpp:122] Setting up 423
+I0601 17:59:48.369830 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.369839 14567 net.cpp:137] Memory required for data: 2227187440
+I0601 17:59:48.369846 14567 layer_factory.hpp:77] Creating layer 424
+I0601 17:59:48.369858 14567 net.cpp:84] Creating Layer 424
+I0601 17:59:48.369864 14567 net.cpp:406] 424 <- 423
+I0601 17:59:48.369874 14567 net.cpp:380] 424 -> 424
+I0601 17:59:48.370191 14567 net.cpp:122] Setting up 424
+I0601 17:59:48.370204 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.370211 14567 net.cpp:137] Memory required for data: 2227814640
+I0601 17:59:48.370221 14567 layer_factory.hpp:77] Creating layer 425_bn
+I0601 17:59:48.370231 14567 net.cpp:84] Creating Layer 425_bn
+I0601 17:59:48.370239 14567 net.cpp:406] 425_bn <- 424
+I0601 17:59:48.370251 14567 net.cpp:380] 425_bn -> 425
+I0601 17:59:48.370481 14567 net.cpp:122] Setting up 425_bn
+I0601 17:59:48.370493 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.370499 14567 net.cpp:137] Memory required for data: 2228441840
+I0601 17:59:48.370540 14567 layer_factory.hpp:77] Creating layer 425
+I0601 17:59:48.370560 14567 net.cpp:84] Creating Layer 425
+I0601 17:59:48.370570 14567 net.cpp:406] 425 <- 425
+I0601 17:59:48.370579 14567 net.cpp:367] 425 -> 425 (in-place)
+I0601 17:59:48.370632 14567 layer_factory.hpp:77] Creating layer 425
+I0601 17:59:48.370759 14567 net.cpp:122] Setting up 425
+I0601 17:59:48.370771 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.370779 14567 net.cpp:137] Memory required for data: 2229069040
+I0601 17:59:48.370790 14567 layer_factory.hpp:77] Creating layer 426
+I0601 17:59:48.370800 14567 net.cpp:84] Creating Layer 426
+I0601 17:59:48.370808 14567 net.cpp:406] 426 <- 417_417_0_split_1
+I0601 17:59:48.370817 14567 net.cpp:406] 426 <- 425
+I0601 17:59:48.370826 14567 net.cpp:380] 426 -> 426
+I0601 17:59:48.370883 14567 net.cpp:122] Setting up 426
+I0601 17:59:48.370895 14567 net.cpp:129] Top shape: 20 160 7 7 (156800)
+I0601 17:59:48.370903 14567 net.cpp:137] Memory required for data: 2229696240
+I0601 17:59:48.370909 14567 layer_factory.hpp:77] Creating layer 427
+I0601 17:59:48.370923 14567 net.cpp:84] Creating Layer 427
+I0601 17:59:48.370931 14567 net.cpp:406] 427 <- 426
+I0601 17:59:48.370940 14567 net.cpp:380] 427 -> 427
+I0601 17:59:48.371330 14567 net.cpp:122] Setting up 427
+I0601 17:59:48.371345 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.371351 14567 net.cpp:137] Memory required for data: 2233459440
+I0601 17:59:48.371361 14567 layer_factory.hpp:77] Creating layer 428_bn
+I0601 17:59:48.371385 14567 net.cpp:84] Creating Layer 428_bn
+I0601 17:59:48.371397 14567 net.cpp:406] 428_bn <- 427
+I0601 17:59:48.371407 14567 net.cpp:380] 428_bn -> 428
+I0601 17:59:48.371650 14567 net.cpp:122] Setting up 428_bn
+I0601 17:59:48.371665 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.371671 14567 net.cpp:137] Memory required for data: 2237222640
+I0601 17:59:48.371686 14567 layer_factory.hpp:77] Creating layer 428
+I0601 17:59:48.371724 14567 net.cpp:84] Creating Layer 428
+I0601 17:59:48.371732 14567 net.cpp:406] 428 <- 428
+I0601 17:59:48.371745 14567 net.cpp:367] 428 -> 428 (in-place)
+I0601 17:59:48.371803 14567 layer_factory.hpp:77] Creating layer 428
+I0601 17:59:48.371956 14567 net.cpp:122] Setting up 428
+I0601 17:59:48.371968 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.371975 14567 net.cpp:137] Memory required for data: 2240985840
+I0601 17:59:48.371987 14567 layer_factory.hpp:77] Creating layer 429
+I0601 17:59:48.371996 14567 net.cpp:84] Creating Layer 429
+I0601 17:59:48.372004 14567 net.cpp:406] 429 <- 428
+I0601 17:59:48.372015 14567 net.cpp:380] 429 -> 429
+I0601 17:59:48.372047 14567 net.cpp:122] Setting up 429
+I0601 17:59:48.372058 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.372073 14567 net.cpp:137] Memory required for data: 2244749040
+I0601 17:59:48.372081 14567 layer_factory.hpp:77] Creating layer 430
+I0601 17:59:48.372092 14567 net.cpp:84] Creating Layer 430
+I0601 17:59:48.372098 14567 net.cpp:406] 430 <- 429
+I0601 17:59:48.372110 14567 net.cpp:380] 430 -> 430
+I0601 17:59:48.372373 14567 net.cpp:122] Setting up 430
+I0601 17:59:48.372386 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.372393 14567 net.cpp:137] Memory required for data: 2248512240
+I0601 17:59:48.372406 14567 layer_factory.hpp:77] Creating layer 431_bn
+I0601 17:59:48.372431 14567 net.cpp:84] Creating Layer 431_bn
+I0601 17:59:48.372442 14567 net.cpp:406] 431_bn <- 430
+I0601 17:59:48.372460 14567 net.cpp:380] 431_bn -> 431
+I0601 17:59:48.372689 14567 net.cpp:122] Setting up 431_bn
+I0601 17:59:48.372702 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.372710 14567 net.cpp:137] Memory required for data: 2252275440
+I0601 17:59:48.372725 14567 layer_factory.hpp:77] Creating layer 431
+I0601 17:59:48.372738 14567 net.cpp:84] Creating Layer 431
+I0601 17:59:48.372747 14567 net.cpp:406] 431 <- 431
+I0601 17:59:48.372757 14567 net.cpp:367] 431 -> 431 (in-place)
+I0601 17:59:48.372814 14567 layer_factory.hpp:77] Creating layer 431
+I0601 17:59:48.372963 14567 net.cpp:122] Setting up 431
+I0601 17:59:48.372977 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.372982 14567 net.cpp:137] Memory required for data: 2256038640
+I0601 17:59:48.372994 14567 layer_factory.hpp:77] Creating layer 432
+I0601 17:59:48.373006 14567 net.cpp:84] Creating Layer 432
+I0601 17:59:48.373013 14567 net.cpp:406] 432 <- 431
+I0601 17:59:48.373023 14567 net.cpp:380] 432 -> 432
+I0601 17:59:48.373054 14567 net.cpp:122] Setting up 432
+I0601 17:59:48.373070 14567 net.cpp:129] Top shape: 20 960 7 7 (940800)
+I0601 17:59:48.373078 14567 net.cpp:137] Memory required for data: 2259801840
+I0601 17:59:48.373085 14567 layer_factory.hpp:77] Creating layer 433
+I0601 17:59:48.373100 14567 net.cpp:84] Creating Layer 433
+I0601 17:59:48.373106 14567 net.cpp:406] 433 <- 432
+I0601 17:59:48.373133 14567 net.cpp:380] 433 -> 433
+I0601 17:59:48.378334 14567 net.cpp:122] Setting up 433
+I0601 17:59:48.378353 14567 net.cpp:129] Top shape: 20 320 7 7 (313600)
+I0601 17:59:48.378361 14567 net.cpp:137] Memory required for data: 2261056240
+I0601 17:59:48.378372 14567 layer_factory.hpp:77] Creating layer 434_bn
+I0601 17:59:48.378401 14567 net.cpp:84] Creating Layer 434_bn
+I0601 17:59:48.378414 14567 net.cpp:406] 434_bn <- 433
+I0601 17:59:48.378427 14567 net.cpp:380] 434_bn -> 434
+I0601 17:59:48.378705 14567 net.cpp:122] Setting up 434_bn
+I0601 17:59:48.378717 14567 net.cpp:129] Top shape: 20 320 7 7 (313600)
+I0601 17:59:48.378723 14567 net.cpp:137] Memory required for data: 2262310640
+I0601 17:59:48.378739 14567 layer_factory.hpp:77] Creating layer 434
+I0601 17:59:48.378751 14567 net.cpp:84] Creating Layer 434
+I0601 17:59:48.378758 14567 net.cpp:406] 434 <- 434
+I0601 17:59:48.378770 14567 net.cpp:367] 434 -> 434 (in-place)
+I0601 17:59:48.378825 14567 layer_factory.hpp:77] Creating layer 434
+I0601 17:59:48.378953 14567 net.cpp:122] Setting up 434
+I0601 17:59:48.378967 14567 net.cpp:129] Top shape: 20 320 7 7 (313600)
+I0601 17:59:48.378973 14567 net.cpp:137] Memory required for data: 2263565040
+I0601 17:59:48.378984 14567 layer_factory.hpp:77] Creating layer 435
+I0601 17:59:48.378998 14567 net.cpp:84] Creating Layer 435
+I0601 17:59:48.379007 14567 net.cpp:406] 435 <- 434
+I0601 17:59:48.379017 14567 net.cpp:380] 435 -> 435
+I0601 17:59:48.385323 14567 net.cpp:122] Setting up 435
+I0601 17:59:48.385342 14567 net.cpp:129] Top shape: 20 1280 7 7 (1254400)
+I0601 17:59:48.385350 14567 net.cpp:137] Memory required for data: 2268582640
+I0601 17:59:48.385361 14567 layer_factory.hpp:77] Creating layer 436_bn
+I0601 17:59:48.385386 14567 net.cpp:84] Creating Layer 436_bn
+I0601 17:59:48.385399 14567 net.cpp:406] 436_bn <- 435
+I0601 17:59:48.385427 14567 net.cpp:380] 436_bn -> 436
+I0601 17:59:48.385671 14567 net.cpp:122] Setting up 436_bn
+I0601 17:59:48.385685 14567 net.cpp:129] Top shape: 20 1280 7 7 (1254400)
+I0601 17:59:48.385692 14567 net.cpp:137] Memory required for data: 2273600240
+I0601 17:59:48.385726 14567 layer_factory.hpp:77] Creating layer 436
+I0601 17:59:48.385738 14567 net.cpp:84] Creating Layer 436
+I0601 17:59:48.385746 14567 net.cpp:406] 436 <- 436
+I0601 17:59:48.385756 14567 net.cpp:367] 436 -> 436 (in-place)
+I0601 17:59:48.385808 14567 layer_factory.hpp:77] Creating layer 436
+I0601 17:59:48.385937 14567 net.cpp:122] Setting up 436
+I0601 17:59:48.385967 14567 net.cpp:129] Top shape: 20 1280 7 7 (1254400)
+I0601 17:59:48.385993 14567 net.cpp:137] Memory required for data: 2278617840
+I0601 17:59:48.386004 14567 layer_factory.hpp:77] Creating layer 437
+I0601 17:59:48.386018 14567 net.cpp:84] Creating Layer 437
+I0601 17:59:48.386027 14567 net.cpp:406] 437 <- 436
+I0601 17:59:48.386037 14567 net.cpp:380] 437 -> 437
+I0601 17:59:48.386081 14567 net.cpp:122] Setting up 437
+I0601 17:59:48.386095 14567 net.cpp:129] Top shape: 20 1280 7 7 (1254400)
+I0601 17:59:48.386101 14567 net.cpp:137] Memory required for data: 2283635440
+I0601 17:59:48.386108 14567 layer_factory.hpp:77] Creating layer 438
+I0601 17:59:48.386121 14567 net.cpp:84] Creating Layer 438
+I0601 17:59:48.386129 14567 net.cpp:406] 438 <- 437
+I0601 17:59:48.386142 14567 net.cpp:380] 438 -> 438
+I0601 17:59:48.386204 14567 net.cpp:122] Setting up 438
+I0601 17:59:48.386216 14567 net.cpp:129] Top shape: 20 1280 1 1 (25600)
+I0601 17:59:48.386224 14567 net.cpp:137] Memory required for data: 2283737840
+I0601 17:59:48.386229 14567 layer_factory.hpp:77] Creating layer 440
+I0601 17:59:48.386250 14567 net.cpp:84] Creating Layer 440
+I0601 17:59:48.386274 14567 net.cpp:406] 440 <- 438
+I0601 17:59:48.386284 14567 net.cpp:380] 440 -> 440
+I0601 17:59:48.386319 14567 net.cpp:122] Setting up 440
+I0601 17:59:48.386330 14567 net.cpp:129] Top shape: 20 1280 (25600)
+I0601 17:59:48.386337 14567 net.cpp:137] Memory required for data: 2283840240
+I0601 17:59:48.386345 14567 layer_factory.hpp:77] Creating layer 441_442
+I0601 17:59:48.386379 14567 net.cpp:84] Creating Layer 441_442
+I0601 17:59:48.386406 14567 net.cpp:406] 441_442 <- 440
+I0601 17:59:48.386421 14567 net.cpp:380] 441_442 -> 441
+I0601 17:59:48.386482 14567 net.cpp:122] Setting up 441_442
+I0601 17:59:48.386499 14567 net.cpp:129] Top shape: 20 1280 (25600)
+I0601 17:59:48.386507 14567 net.cpp:137] Memory required for data: 2283942640
+I0601 17:59:48.386514 14567 layer_factory.hpp:77] Creating layer 443
+I0601 17:59:48.386529 14567 net.cpp:84] Creating Layer 443
+I0601 17:59:48.386538 14567 net.cpp:406] 443 <- 441
+I0601 17:59:48.386564 14567 net.cpp:380] 443 -> 443
+I0601 17:59:48.394853 14567 net.cpp:122] Setting up 443
+I0601 17:59:48.394876 14567 net.cpp:129] Top shape: 20 1000 (20000)
+I0601 17:59:48.394883 14567 net.cpp:137] Memory required for data: 2284022640
+I0601 17:59:48.394896 14567 layer_factory.hpp:77] Creating layer 443_443_0_split
+I0601 17:59:48.394917 14567 net.cpp:84] Creating Layer 443_443_0_split
+I0601 17:59:48.394927 14567 net.cpp:406] 443_443_0_split <- 443
+I0601 17:59:48.394937 14567 net.cpp:380] 443_443_0_split -> 443_443_0_split_0
+I0601 17:59:48.394968 14567 net.cpp:380] 443_443_0_split -> 443_443_0_split_1
+I0601 17:59:48.395025 14567 net.cpp:122] Setting up 443_443_0_split
+I0601 17:59:48.395038 14567 net.cpp:129] Top shape: 20 1000 (20000)
+I0601 17:59:48.395048 14567 net.cpp:129] Top shape: 20 1000 (20000)
+I0601 17:59:48.395056 14567 net.cpp:137] Memory required for data: 2284182640
+I0601 17:59:48.395062 14567 layer_factory.hpp:77] Creating layer accuracy/top1
+I0601 17:59:48.395090 14567 net.cpp:84] Creating Layer accuracy/top1
+I0601 17:59:48.395100 14567 net.cpp:406] accuracy/top1 <- 443_443_0_split_0
+I0601 17:59:48.395110 14567 net.cpp:406] accuracy/top1 <- label_data_1_split_0
+I0601 17:59:48.395121 14567 net.cpp:380] accuracy/top1 -> accuracy@1
+I0601 17:59:48.395145 14567 net.cpp:122] Setting up accuracy/top1
+I0601 17:59:48.395156 14567 net.cpp:129] Top shape: (1)
+I0601 17:59:48.395164 14567 net.cpp:137] Memory required for data: 2284182644
+I0601 17:59:48.395170 14567 layer_factory.hpp:77] Creating layer accuracy/top5
+I0601 17:59:48.395197 14567 net.cpp:84] Creating Layer accuracy/top5
+I0601 17:59:48.395225 14567 net.cpp:406] accuracy/top5 <- 443_443_0_split_1
+I0601 17:59:48.395234 14567 net.cpp:406] accuracy/top5 <- label_data_1_split_1
+I0601 17:59:48.395247 14567 net.cpp:380] accuracy/top5 -> accuracy@5
+I0601 17:59:48.395262 14567 net.cpp:122] Setting up accuracy/top5
+I0601 17:59:48.395273 14567 net.cpp:129] Top shape: (1)
+I0601 17:59:48.395280 14567 net.cpp:137] Memory required for data: 2284182648
+I0601 17:59:48.395287 14567 net.cpp:200] accuracy/top5 does not need backward computation.
+I0601 17:59:48.395295 14567 net.cpp:200] accuracy/top1 does not need backward computation.
+I0601 17:59:48.395303 14567 net.cpp:200] 443_443_0_split does not need backward computation.
+I0601 17:59:48.395310 14567 net.cpp:200] 443 does not need backward computation.
+I0601 17:59:48.395318 14567 net.cpp:200] 441_442 does not need backward computation.
+I0601 17:59:48.395324 14567 net.cpp:200] 440 does not need backward computation.
+I0601 17:59:48.395331 14567 net.cpp:200] 438 does not need backward computation.
+I0601 17:59:48.395339 14567 net.cpp:200] 437 does not need backward computation.
+I0601 17:59:48.395346 14567 net.cpp:200] 436 does not need backward computation.
+I0601 17:59:48.395352 14567 net.cpp:200] 436_bn does not need backward computation.
+I0601 17:59:48.395359 14567 net.cpp:200] 435 does not need backward computation.
+I0601 17:59:48.395366 14567 net.cpp:200] 434 does not need backward computation.
+I0601 17:59:48.395373 14567 net.cpp:200] 434_bn does not need backward computation.
+I0601 17:59:48.395380 14567 net.cpp:200] 433 does not need backward computation.
+I0601 17:59:48.395388 14567 net.cpp:200] 432 does not need backward computation.
+I0601 17:59:48.395395 14567 net.cpp:200] 431 does not need backward computation.
+I0601 17:59:48.395402 14567 net.cpp:200] 431_bn does not need backward computation.
+I0601 17:59:48.395409 14567 net.cpp:200] 430 does not need backward computation.
+I0601 17:59:48.395417 14567 net.cpp:200] 429 does not need backward computation.
+I0601 17:59:48.395443 14567 net.cpp:200] 428 does not need backward computation.
+I0601 17:59:48.395452 14567 net.cpp:200] 428_bn does not need backward computation.
+I0601 17:59:48.395459 14567 net.cpp:200] 427 does not need backward computation.
+I0601 17:59:48.395467 14567 net.cpp:200] 426 does not need backward computation.
+I0601 17:59:48.395474 14567 net.cpp:200] 425 does not need backward computation.
+I0601 17:59:48.395496 14567 net.cpp:200] 425_bn does not need backward computation.
+I0601 17:59:48.395503 14567 net.cpp:200] 424 does not need backward computation.
+I0601 17:59:48.395511 14567 net.cpp:200] 423 does not need backward computation.
+I0601 17:59:48.395522 14567 net.cpp:200] 422 does not need backward computation.
+I0601 17:59:48.395548 14567 net.cpp:200] 422_bn does not need backward computation.
+I0601 17:59:48.395555 14567 net.cpp:200] 421 does not need backward computation.
+I0601 17:59:48.395563 14567 net.cpp:200] 420 does not need backward computation.
+I0601 17:59:48.395570 14567 net.cpp:200] 419 does not need backward computation.
+I0601 17:59:48.395577 14567 net.cpp:200] 419_bn does not need backward computation.
+I0601 17:59:48.395584 14567 net.cpp:200] 418 does not need backward computation.
+I0601 17:59:48.395592 14567 net.cpp:200] 417_417_0_split does not need backward computation.
+I0601 17:59:48.395599 14567 net.cpp:200] 417 does not need backward computation.
+I0601 17:59:48.395608 14567 net.cpp:200] 416 does not need backward computation.
+I0601 17:59:48.395615 14567 net.cpp:200] 416_bn does not need backward computation.
+I0601 17:59:48.395622 14567 net.cpp:200] 415 does not need backward computation.
+I0601 17:59:48.395630 14567 net.cpp:200] 414 does not need backward computation.
+I0601 17:59:48.395637 14567 net.cpp:200] 413 does not need backward computation.
+I0601 17:59:48.395644 14567 net.cpp:200] 413_bn does not need backward computation.
+I0601 17:59:48.395653 14567 net.cpp:200] 412 does not need backward computation.
+I0601 17:59:48.395660 14567 net.cpp:200] 411 does not need backward computation.
+I0601 17:59:48.395668 14567 net.cpp:200] 410 does not need backward computation.
+I0601 17:59:48.395674 14567 net.cpp:200] 410_bn does not need backward computation.
+I0601 17:59:48.395682 14567 net.cpp:200] 409 does not need backward computation.
+I0601 17:59:48.395689 14567 net.cpp:200] 408_408_0_split does not need backward computation.
+I0601 17:59:48.395697 14567 net.cpp:200] 408 does not need backward computation.
+I0601 17:59:48.395704 14567 net.cpp:200] 408_bn does not need backward computation.
+I0601 17:59:48.395712 14567 net.cpp:200] 407 does not need backward computation.
+I0601 17:59:48.395720 14567 net.cpp:200] 406 does not need backward computation.
+I0601 17:59:48.395727 14567 net.cpp:200] 405 does not need backward computation.
+I0601 17:59:48.395735 14567 net.cpp:200] 405_bn does not need backward computation.
+I0601 17:59:48.395741 14567 net.cpp:200] 404 does not need backward computation.
+I0601 17:59:48.395750 14567 net.cpp:200] 403 does not need backward computation.
+I0601 17:59:48.395756 14567 net.cpp:200] 402 does not need backward computation.
+I0601 17:59:48.395763 14567 net.cpp:200] 402_bn does not need backward computation.
+I0601 17:59:48.395771 14567 net.cpp:200] 401 does not need backward computation.
+I0601 17:59:48.395779 14567 net.cpp:200] 400 does not need backward computation.
+I0601 17:59:48.395787 14567 net.cpp:200] 399 does not need backward computation.
+I0601 17:59:48.395794 14567 net.cpp:200] 399_bn does not need backward computation.
+I0601 17:59:48.395802 14567 net.cpp:200] 398 does not need backward computation.
+I0601 17:59:48.395809 14567 net.cpp:200] 397 does not need backward computation.
+I0601 17:59:48.395817 14567 net.cpp:200] 396 does not need backward computation.
+I0601 17:59:48.395823 14567 net.cpp:200] 396_bn does not need backward computation.
+I0601 17:59:48.395831 14567 net.cpp:200] 395 does not need backward computation.
+I0601 17:59:48.395838 14567 net.cpp:200] 394 does not need backward computation.
+I0601 17:59:48.395846 14567 net.cpp:200] 393 does not need backward computation.
+I0601 17:59:48.395861 14567 net.cpp:200] 393_bn does not need backward computation.
+I0601 17:59:48.395869 14567 net.cpp:200] 392 does not need backward computation.
+I0601 17:59:48.395877 14567 net.cpp:200] 391_391_0_split does not need backward computation.
+I0601 17:59:48.395885 14567 net.cpp:200] 391 does not need backward computation.
+I0601 17:59:48.395893 14567 net.cpp:200] 390 does not need backward computation.
+I0601 17:59:48.395900 14567 net.cpp:200] 390_bn does not need backward computation.
+I0601 17:59:48.395908 14567 net.cpp:200] 389 does not need backward computation.
+I0601 17:59:48.395915 14567 net.cpp:200] 388 does not need backward computation.
+I0601 17:59:48.395923 14567 net.cpp:200] 387 does not need backward computation.
+I0601 17:59:48.395931 14567 net.cpp:200] 387_bn does not need backward computation.
+I0601 17:59:48.395938 14567 net.cpp:200] 386 does not need backward computation.
+I0601 17:59:48.395946 14567 net.cpp:200] 385 does not need backward computation.
+I0601 17:59:48.395953 14567 net.cpp:200] 384 does not need backward computation.
+I0601 17:59:48.395961 14567 net.cpp:200] 384_bn does not need backward computation.
+I0601 17:59:48.395968 14567 net.cpp:200] 383 does not need backward computation.
+I0601 17:59:48.395977 14567 net.cpp:200] 382_382_0_split does not need backward computation.
+I0601 17:59:48.395983 14567 net.cpp:200] 382 does not need backward computation.
+I0601 17:59:48.395990 14567 net.cpp:200] 382_bn does not need backward computation.
+I0601 17:59:48.395998 14567 net.cpp:200] 381 does not need backward computation.
+I0601 17:59:48.396005 14567 net.cpp:200] 380 does not need backward computation.
+I0601 17:59:48.396013 14567 net.cpp:200] 379 does not need backward computation.
+I0601 17:59:48.396024 14567 net.cpp:200] 379_bn does not need backward computation.
+I0601 17:59:48.396031 14567 net.cpp:200] 378 does not need backward computation.
+I0601 17:59:48.396039 14567 net.cpp:200] 377 does not need backward computation.
+I0601 17:59:48.396046 14567 net.cpp:200] 376 does not need backward computation.
+I0601 17:59:48.396054 14567 net.cpp:200] 376_bn does not need backward computation.
+I0601 17:59:48.396061 14567 net.cpp:200] 375 does not need backward computation.
+I0601 17:59:48.396075 14567 net.cpp:200] 374 does not need backward computation.
+I0601 17:59:48.396083 14567 net.cpp:200] 373 does not need backward computation.
+I0601 17:59:48.396090 14567 net.cpp:200] 373_bn does not need backward computation.
+I0601 17:59:48.396097 14567 net.cpp:200] 372 does not need backward computation.
+I0601 17:59:48.396106 14567 net.cpp:200] 371 does not need backward computation.
+I0601 17:59:48.396119 14567 net.cpp:200] 370 does not need backward computation.
+I0601 17:59:48.396127 14567 net.cpp:200] 370_bn does not need backward computation.
+I0601 17:59:48.396134 14567 net.cpp:200] 369 does not need backward computation.
+I0601 17:59:48.396142 14567 net.cpp:200] 368 does not need backward computation.
+I0601 17:59:48.396149 14567 net.cpp:200] 367 does not need backward computation.
+I0601 17:59:48.396157 14567 net.cpp:200] 367_bn does not need backward computation.
+I0601 17:59:48.396164 14567 net.cpp:200] 366 does not need backward computation.
+I0601 17:59:48.396172 14567 net.cpp:200] 365_365_0_split does not need backward computation.
+I0601 17:59:48.396179 14567 net.cpp:200] 365 does not need backward computation.
+I0601 17:59:48.396188 14567 net.cpp:200] 364 does not need backward computation.
+I0601 17:59:48.396194 14567 net.cpp:200] 364_bn does not need backward computation.
+I0601 17:59:48.396203 14567 net.cpp:200] 363 does not need backward computation.
+I0601 17:59:48.396210 14567 net.cpp:200] 362 does not need backward computation.
+I0601 17:59:48.396219 14567 net.cpp:200] 361 does not need backward computation.
+I0601 17:59:48.396225 14567 net.cpp:200] 361_bn does not need backward computation.
+I0601 17:59:48.396232 14567 net.cpp:200] 360 does not need backward computation.
+I0601 17:59:48.396240 14567 net.cpp:200] 359 does not need backward computation.
+I0601 17:59:48.396260 14567 net.cpp:200] 358 does not need backward computation.
+I0601 17:59:48.396268 14567 net.cpp:200] 358_bn does not need backward computation.
+I0601 17:59:48.396275 14567 net.cpp:200] 357 does not need backward computation.
+I0601 17:59:48.396283 14567 net.cpp:200] 356_356_0_split does not need backward computation.
+I0601 17:59:48.396291 14567 net.cpp:200] 356 does not need backward computation.
+I0601 17:59:48.396299 14567 net.cpp:200] 355 does not need backward computation.
+I0601 17:59:48.396306 14567 net.cpp:200] 355_bn does not need backward computation.
+I0601 17:59:48.396314 14567 net.cpp:200] 354 does not need backward computation.
+I0601 17:59:48.396322 14567 net.cpp:200] 353 does not need backward computation.
+I0601 17:59:48.396330 14567 net.cpp:200] 352 does not need backward computation.
+I0601 17:59:48.396337 14567 net.cpp:200] 352_bn does not need backward computation.
+I0601 17:59:48.396345 14567 net.cpp:200] 351 does not need backward computation.
+I0601 17:59:48.396353 14567 net.cpp:200] 350 does not need backward computation.
+I0601 17:59:48.396360 14567 net.cpp:200] 349 does not need backward computation.
+I0601 17:59:48.396368 14567 net.cpp:200] 349_bn does not need backward computation.
+I0601 17:59:48.396375 14567 net.cpp:200] 348 does not need backward computation.
+I0601 17:59:48.396383 14567 net.cpp:200] 347_347_0_split does not need backward computation.
+I0601 17:59:48.396390 14567 net.cpp:200] 347 does not need backward computation.
+I0601 17:59:48.396399 14567 net.cpp:200] 347_bn does not need backward computation.
+I0601 17:59:48.396405 14567 net.cpp:200] 346 does not need backward computation.
+I0601 17:59:48.396414 14567 net.cpp:200] 345 does not need backward computation.
+I0601 17:59:48.396420 14567 net.cpp:200] 344 does not need backward computation.
+I0601 17:59:48.396427 14567 net.cpp:200] 344_bn does not need backward computation.
+I0601 17:59:48.396435 14567 net.cpp:200] 343 does not need backward computation.
+I0601 17:59:48.396442 14567 net.cpp:200] 342 does not need backward computation.
+I0601 17:59:48.396450 14567 net.cpp:200] 341 does not need backward computation.
+I0601 17:59:48.396457 14567 net.cpp:200] 341_bn does not need backward computation.
+I0601 17:59:48.396466 14567 net.cpp:200] 340 does not need backward computation.
+I0601 17:59:48.396473 14567 net.cpp:200] 339 does not need backward computation.
+I0601 17:59:48.396481 14567 net.cpp:200] 338 does not need backward computation.
+I0601 17:59:48.396488 14567 net.cpp:200] 338_bn does not need backward computation.
+I0601 17:59:48.396497 14567 net.cpp:200] 337 does not need backward computation.
+I0601 17:59:48.396503 14567 net.cpp:200] 336 does not need backward computation.
+I0601 17:59:48.396510 14567 net.cpp:200] 335 does not need backward computation.
+I0601 17:59:48.396518 14567 net.cpp:200] 335_bn does not need backward computation.
+I0601 17:59:48.396525 14567 net.cpp:200] 334 does not need backward computation.
+I0601 17:59:48.396533 14567 net.cpp:200] 333 does not need backward computation.
+I0601 17:59:48.396541 14567 net.cpp:200] 332 does not need backward computation.
+I0601 17:59:48.396548 14567 net.cpp:200] 332_bn does not need backward computation.
+I0601 17:59:48.396555 14567 net.cpp:200] 331 does not need backward computation.
+I0601 17:59:48.396564 14567 net.cpp:200] 330_330_0_split does not need backward computation.
+I0601 17:59:48.396570 14567 net.cpp:200] 330 does not need backward computation.
+I0601 17:59:48.396579 14567 net.cpp:200] 329 does not need backward computation.
+I0601 17:59:48.396586 14567 net.cpp:200] 329_bn does not need backward computation.
+I0601 17:59:48.396595 14567 net.cpp:200] 328 does not need backward computation.
+I0601 17:59:48.396601 14567 net.cpp:200] 327 does not need backward computation.
+I0601 17:59:48.396610 14567 net.cpp:200] 326 does not need backward computation.
+I0601 17:59:48.396616 14567 net.cpp:200] 326_bn does not need backward computation.
+I0601 17:59:48.396625 14567 net.cpp:200] 325 does not need backward computation.
+I0601 17:59:48.396632 14567 net.cpp:200] 324 does not need backward computation.
+I0601 17:59:48.396647 14567 net.cpp:200] 323 does not need backward computation.
+I0601 17:59:48.396656 14567 net.cpp:200] 323_bn does not need backward computation.
+I0601 17:59:48.396663 14567 net.cpp:200] 322 does not need backward computation.
+I0601 17:59:48.396672 14567 net.cpp:200] 321_321_0_split does not need backward computation.
+I0601 17:59:48.396678 14567 net.cpp:200] 321 does not need backward computation.
+I0601 17:59:48.396687 14567 net.cpp:200] 321_bn does not need backward computation.
+I0601 17:59:48.396693 14567 net.cpp:200] 320 does not need backward computation.
+I0601 17:59:48.396701 14567 net.cpp:200] 319 does not need backward computation.
+I0601 17:59:48.396708 14567 net.cpp:200] 318 does not need backward computation.
+I0601 17:59:48.396715 14567 net.cpp:200] 318_bn does not need backward computation.
+I0601 17:59:48.396723 14567 net.cpp:200] 317 does not need backward computation.
+I0601 17:59:48.396730 14567 net.cpp:200] 316 does not need backward computation.
+I0601 17:59:48.396739 14567 net.cpp:200] 315 does not need backward computation.
+I0601 17:59:48.396745 14567 net.cpp:200] 315_bn does not need backward computation.
+I0601 17:59:48.396754 14567 net.cpp:200] 314 does not need backward computation.
+I0601 17:59:48.396760 14567 net.cpp:200] 313 does not need backward computation.
+I0601 17:59:48.396770 14567 net.cpp:200] 312 does not need backward computation.
+I0601 17:59:48.396776 14567 net.cpp:200] 312_bn does not need backward computation.
+I0601 17:59:48.396783 14567 net.cpp:200] 311 does not need backward computation.
+I0601 17:59:48.396791 14567 net.cpp:200] 310 does not need backward computation.
+I0601 17:59:48.396798 14567 net.cpp:200] 309 does not need backward computation.
+I0601 17:59:48.396806 14567 net.cpp:200] 309_bn does not need backward computation.
+I0601 17:59:48.396813 14567 net.cpp:200] 308 does not need backward computation.
+I0601 17:59:48.396821 14567 net.cpp:200] 307 does not need backward computation.
+I0601 17:59:48.396829 14567 net.cpp:200] 306 does not need backward computation.
+I0601 17:59:48.396837 14567 net.cpp:200] 306_bn does not need backward computation.
+I0601 17:59:48.396844 14567 net.cpp:200] 305 does not need backward computation.
+I0601 17:59:48.396852 14567 net.cpp:200] 304_304_0_split does not need backward computation.
+I0601 17:59:48.396860 14567 net.cpp:200] 304 does not need backward computation.
+I0601 17:59:48.396868 14567 net.cpp:200] 304_bn does not need backward computation.
+I0601 17:59:48.396876 14567 net.cpp:200] 303 does not need backward computation.
+I0601 17:59:48.396884 14567 net.cpp:200] 302 does not need backward computation.
+I0601 17:59:48.396891 14567 net.cpp:200] 301 does not need backward computation.
+I0601 17:59:48.396899 14567 net.cpp:200] 301_bn does not need backward computation.
+I0601 17:59:48.396908 14567 net.cpp:200] 300 does not need backward computation.
+I0601 17:59:48.396914 14567 net.cpp:200] 299 does not need backward computation.
+I0601 17:59:48.396922 14567 net.cpp:200] 298 does not need backward computation.
+I0601 17:59:48.396930 14567 net.cpp:200] 298_bn does not need backward computation.
+I0601 17:59:48.396937 14567 net.cpp:200] 297 does not need backward computation.
+I0601 17:59:48.396944 14567 net.cpp:200] 296 does not need backward computation.
+I0601 17:59:48.396952 14567 net.cpp:200] 296_bn does not need backward computation.
+I0601 17:59:48.396963 14567 net.cpp:200] 295 does not need backward computation.
+I0601 17:59:48.396971 14567 net.cpp:200] 294 does not need backward computation.
+I0601 17:59:48.396978 14567 net.cpp:200] 293 does not need backward computation.
+I0601 17:59:48.396986 14567 net.cpp:200] 293_bn does not need backward computation.
+I0601 17:59:48.396996 14567 net.cpp:200] 292 does not need backward computation.
+I0601 17:59:48.397004 14567 net.cpp:200] 291 does not need backward computation.
+I0601 17:59:48.397014 14567 net.cpp:200] 290 does not need backward computation.
+I0601 17:59:48.397022 14567 net.cpp:200] 290_bn does not need backward computation.
+I0601 17:59:48.397030 14567 net.cpp:200] 289 does not need backward computation.
+I0601 17:59:48.397044 14567 net.cpp:200] 288 does not need backward computation.
+I0601 17:59:48.397053 14567 net.cpp:200] 287 does not need backward computation.
+I0601 17:59:48.397059 14567 net.cpp:200] 287_bn does not need backward computation.
+I0601 17:59:48.397071 14567 net.cpp:200] 286 does not need backward computation.
+I0601 17:59:48.397080 14567 net.cpp:200] label_data_1_split does not need backward computation.
+I0601 17:59:48.397089 14567 net.cpp:200] data does not need backward computation.
+I0601 17:59:48.397095 14567 net.cpp:242] This network produces output accuracy@1
+I0601 17:59:48.397104 14567 net.cpp:242] This network produces output accuracy@5
+I0601 17:59:48.397238 14567 net.cpp:255] Network initialization done.
+I0601 17:59:48.415182 14567 upgrade_proto.cpp:77] Attempting to upgrade batch norm layers using deprecated params: MobileNetV2.caffemodel
+I0601 17:59:48.415274 14567 upgrade_proto.cpp:80] Successfully upgraded batch norm layers using deprecated params.
+I0601 17:59:48.415295 14567 net.cpp:744] Ignoring source layer 0
+I0601 17:59:48.419340 14567 caffe.cpp:290] Running for 2500 iterations.
+I0601 17:59:48.419392 14567 blocking_queue.cpp:49] Waiting for data
+I0601 17:59:50.408695 14567 caffe.cpp:313] Batch 0, accuracy@1 = 0
+I0601 17:59:50.408747 14567 caffe.cpp:313] Batch 0, accuracy@5 = 0
+I0601 17:59:51.199479 14567 caffe.cpp:313] Batch 1, accuracy@1 = 0
+I0601 17:59:51.199527 14567 caffe.cpp:313] Batch 1, accuracy@5 = 0
+I0601 17:59:51.959996 14567 caffe.cpp:313] Batch 2, accuracy@1 = 0
+I0601 17:59:51.960041 14567 caffe.cpp:313] Batch 2, accuracy@5 = 0
+I0601 17:59:52.676493 14567 caffe.cpp:313] Batch 3, accuracy@1 = 0
+I0601 17:59:52.676542 14567 caffe.cpp:313] Batch 3, accuracy@5 = 0
+I0601 17:59:53.366873 14567 caffe.cpp:313] Batch 4, accuracy@1 = 0
+I0601 17:59:53.366917 14567 caffe.cpp:313] Batch 4, accuracy@5 = 0
+I0601 17:59:54.055907 14567 caffe.cpp:313] Batch 5, accuracy@1 = 0
+I0601 17:59:54.055940 14567 caffe.cpp:313] Batch 5, accuracy@5 = 0
+I0601 17:59:54.750224 14567 caffe.cpp:313] Batch 6, accuracy@1 = 0
+I0601 17:59:54.750273 14567 caffe.cpp:313] Batch 6, accuracy@5 = 0
+I0601 17:59:55.435439 14567 caffe.cpp:313] Batch 7, accuracy@1 = 0
+I0601 17:59:55.435477 14567 caffe.cpp:313] Batch 7, accuracy@5 = 0
+I0601 17:59:56.132135 14567 caffe.cpp:313] Batch 8, accuracy@1 = 0
+I0601 17:59:56.132179 14567 caffe.cpp:313] Batch 8, accuracy@5 = 0
+I0601 17:59:56.986320 14567 caffe.cpp:313] Batch 9, accuracy@1 = 0
+I0601 17:59:56.986358 14567 caffe.cpp:313] Batch 9, accuracy@5 = 0
+I0601 17:59:57.690987 14567 caffe.cpp:313] Batch 10, accuracy@1 = 0
+I0601 17:59:57.691020 14567 caffe.cpp:313] Batch 10, accuracy@5 = 0
+I0601 17:59:58.349117 14567 caffe.cpp:313] Batch 11, accuracy@1 = 0
+I0601 17:59:58.349156 14567 caffe.cpp:313] Batch 11, accuracy@5 = 0
+I0601 17:59:59.005826 14567 caffe.cpp:313] Batch 12, accuracy@1 = 0
+I0601 17:59:59.005872 14567 caffe.cpp:313] Batch 12, accuracy@5 = 0
+I0601 17:59:59.647128 14567 caffe.cpp:313] Batch 13, accuracy@1 = 0
+I0601 17:59:59.647158 14567 caffe.cpp:313] Batch 13, accuracy@5 = 0
+I0601 18:00:00.293352 14567 caffe.cpp:313] Batch 14, accuracy@1 = 0
+I0601 18:00:00.293393 14567 caffe.cpp:313] Batch 14, accuracy@5 = 0
+I0601 18:00:00.941639 14567 caffe.cpp:313] Batch 15, accuracy@1 = 0
+I0601 18:00:00.941670 14567 caffe.cpp:313] Batch 15, accuracy@5 = 0
+I0601 18:00:01.649402 14567 caffe.cpp:313] Batch 16, accuracy@1 = 0
+I0601 18:00:01.649436 14567 caffe.cpp:313] Batch 16, accuracy@5 = 0
+I0601 18:00:02.341603 14567 caffe.cpp:313] Batch 17, accuracy@1 = 0
+I0601 18:00:02.341639 14567 caffe.cpp:313] Batch 17, accuracy@5 = 0
+I0601 18:00:03.033778 14567 caffe.cpp:313] Batch 18, accuracy@1 = 0
+I0601 18:00:03.033820 14567 caffe.cpp:313] Batch 18, accuracy@5 = 0
+I0601 18:00:03.683802 14567 caffe.cpp:313] Batch 19, accuracy@1 = 0
+I0601 18:00:03.683841 14567 caffe.cpp:313] Batch 19, accuracy@5 = 0
+I0601 18:00:04.336547 14567 caffe.cpp:313] Batch 20, accuracy@1 = 0
+I0601 18:00:04.336585 14567 caffe.cpp:313] Batch 20, accuracy@5 = 0
+I0601 18:00:04.980232 14567 caffe.cpp:313] Batch 21, accuracy@1 = 0
+I0601 18:00:04.980295 14567 caffe.cpp:313] Batch 21, accuracy@5 = 0.05
+I0601 18:00:05.625682 14567 caffe.cpp:313] Batch 22, accuracy@1 = 0
+I0601 18:00:05.625717 14567 caffe.cpp:313] Batch 22, accuracy@5 = 0
+I0601 18:00:06.272451 14567 caffe.cpp:313] Batch 23, accuracy@1 = 0
+I0601 18:00:06.272490 14567 caffe.cpp:313] Batch 23, accuracy@5 = 0
+srun: Force Terminated job 200395
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: *** STEP 200395.0 ON SZ-IDC1-172-20-20-22 CANCELLED AT 2018-06-01T18:00:06 ***
+*** Aborted at 1527847206 (unix time) try "date -d @1527847206" if you are using GNU date ***
+PC: @     0x7ffdba1f87c2 ([vdso]+0x7c1)
+*** SIGTERM (@0x38e1) received by PID 14567 (TID 0x7fd2e5935a40) from PID 14561; stack trace: ***
+    @     0x7fd2d7634100 (unknown)
+    @     0x7ffdba1f87c2 ([vdso]+0x7c1)
+    @     0x7fd2d736de6d __clock_gettime
+    @     0x7fd2d006bf2e (unknown)
+    @     0x7fd2d00ff5a5 (unknown)
+    @     0x7fd2d0057083 (unknown)
+    @     0x7fd2d0049b4d (unknown)
+    @     0x7fd2d004afba (unknown)
+    @     0x7fd2cff61d34 (unknown)
+    @     0x7fd2cff62350 (unknown)
+    @     0x7fd2d00b3735 cuMemcpy
+    @     0x7fd2e4918a72 (unknown)
+    @     0x7fd2e48f4c51 (unknown)
+    @     0x7fd2e491eb28 cudaMemcpy
+    @     0x7fd2e4e4062e caffe::caffe_gpu_memcpy()
+    @     0x7fd2e4e3437b caffe::SyncedMemory::gpu_data()
+    @     0x7fd2e4e1fb62 caffe::Blob<>::gpu_data()
+    @     0x7fd2e4d754ed caffe::BaseConvolutionLayer<>::forward_gpu_bias()
+    @     0x7fd2e4e4bb21 caffe::ConvolutionLayer<>::Forward_gpu()
+    @     0x7fd2e4e07e33 caffe::Net<>::ForwardFromTo()
+    @     0x7fd2e4e081e7 caffe::Net<>::Forward()
+    @           0x4091e9 test()
+    @           0x40714c main
+    @     0x7fd2d7285b15 __libc_start_main
+    @           0x407ba5 (unknown)
+srun: error: SZ-IDC1-172-20-20-22: task 0: Terminated
+srun: Terminating job step 200395.0
